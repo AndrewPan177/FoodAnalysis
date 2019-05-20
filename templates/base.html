@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" height:100%>
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>ShowShop</title>
+
+    <style type="text/css">
+    html,body{
+        margin:0;
+        padding:0;
+    }
+        #header {
+            background-color:#363636;
+            color:white;
+            text-align:center;
+            padding:5px;     
+            font-style: normal;
+            font-weight: bolder;
+            width:100%;
+        }
+        #nav {
+            line-height:50px;
+            background-color:#eeeeee;
+            height:800px;
+            width:10%;
+            float:left;
+            padding:5px;
+            
+        }
+        #section {
+            width:800px;
+            float:left;
+            padding:10px; 
+        }
+        #footer {
+            background-color:black;
+            color:white;
+            clear:both;
+            text-align:center;
+            padding:5px;
+        }
+        #container{
+            width:90%;
+            height: 800px;
+            background-color: white;
+            float: left;
+            /*padding-left: 25px;
+            padding-top: 25px;
+            */
+            }
+        .container2{
+            width:100%;
+            height: 100%;
+            background-color: darkmagenta;
+            float: left;
+            /*padding-left: 25px;
+            padding-top: 25px;
+            */
+            }
+        .container3 {
+            width: 500px;
+            height: 100%;
+            overflow: hidden;
+            margin:0;
+        }
+
+    /* 去掉底图logo */
+        .anchorBL{display:none}
+
+    </style>
+
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=3.0&ak=qvVzHfNPxlt0m68cYtcoEqGe65HOEGGt"></script>
+    <script type="text/javascript" src="{% static  'js/test_function.js' %}"></script>
+    
+    <!--用以 点聚合-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    
+    <!--echarts 引用文件-->
+    <script type="text/javascript" src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="{% static './js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/echarts-wordcloud.js' %}"></script>
+
+    <script src="{% static 'js/echarts-wordcloud.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    <script src="{% static 'js/supersized.3.2.7.min.js' %}"></script>
+    <script src="{% static 'js/supersized-init.js' %}"></script>
+
+
+    <!--以下为新的框架-->
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://demo.nicebox.cn/b971994570d5bb9b/img/upimages/favicon.ico">
+
+    <!-- 启用极速模式(webkit) -->
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <!--  -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="full-screen" content="yes">
+    <!-- SEO友好提示 -->
+    <meta name="applicable-device" content="pc,mobile">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/js/comm/html5shiv.js"></script>
+    <script type="text/javascript" src="/js/comm/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="{% static './js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './js/jquery.lazyload.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './js/jquery.nicescroll.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './js/ubox.js' %}" charset="utf-8"></script>
+ 
+    <!--
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="../js/ubox.js" charset="utf-8"></script>
+    -->
+
+
+
+
+
+
+</head>
+<body>
+<!--
+    {%include "framework.html" %}
+    <div id="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {%include "footer.html"%}
+-->
+
+
+
+    <!--以下为新的框架-->
+    <style type="text/css">
+        .right{
+            background: brown;
+            position:fixed;
+            left: 65%;
+            width:100%;
+            height:100%;
+        }
+        .left{
+            position:fixed;
+            left: 0%;
+            width:100%;
+            height:100%;
+        }
+    </style>
+
+    <div style="display: none; z-index: 2147483640; top: 0px; left: 0px; position: fixed; height: 100%; width: 100%;"></div>
+    <div id="idBox" class="lightbox" style="display: none; z-index: 2147483647;">	
+    <div id="boxMain">		
+    <div id="boxTopTitle">			
+    <span id="boxName">显示框</span>			
+    <span id="boxClose" title="关闭" onclick="box.Close();">×		</span></div>		
+    <div id="boxContent">			
+    <iframe id="showiframe" src="../HTML/saved_resource.html" frameborder="0" style="width:100%;">
+        </iframe>	
+        </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static './js/wow.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static './js/010625.js' %}" charset="utf-8"></script>
+    <link href="{% static './css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static './css/animate.min.css'%}">
+    <link rel="stylesheet" href="{% static './css/box.css'%}">
+    <link rel="stylesheet" href="{% static './css/010625.css'%}">
+
+
+    <!--
+    <script type="text/javascript" src="../js/wow.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/010625.js" charset="utf-8"></script>
+    -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/comm/font/css/font-awesome.min.css"> -->
+    <!--
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/box.css">
+    <link rel="stylesheet" type="text/css" href="../css/010625.css">
+    -->
+
+
+
+    <script>
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+        new WOW().init();
+    };
+    var DIY_WEBSITE_ID = "719";
+    var DIY_JS_SERVER = "s143js.nicebox.cn";
+    </script>
+    <script type="text/javascript" src="{% static './js/transform.js' %}" charset="utf-8"></script>
+    <!--
+    <script type="text/javascript">var Default_isFT = 0;</script>
+    <script type="text/javascript" src="../js/transform.js"></script>
+-->
+
+<div id="comm_layout_header" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+<div class="view_contents">
+<div id="image_style_01_1494208478255" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+<div class="view_contents">
+<div class="imgStyle CompatibleImg">
+{% comment %}  ../HTML/image/20170509174102923.jpg{% endcomment %}
+<img class="picSet link-type-" src="{% static './images/20170509174102923.jpg' %}" title="" alt="描述" id="imageModeShow">	
+</div>
+</div>
+</div>
+<div id="div_includeBlock_1494208609979" class="view includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+<div class="view_contents">
+<div id="div_includeBlock_1494209594316" class="view includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+<div class="view_contents">
+<div id="text_style_11_1494209669421" class="view style_11 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+<div class="view_contents">
+					中 国 味 道
+					
+				</div>
+			</div>
+					<div id="text_style_11_1494209710547" class="view style_11 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+				
+				</div>
+			</div>
+					<div id="text_style_11_1494209806278" class="view style_11 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					<a href="http://demo.nicebox.cn/b971994570d5bb9b/pizza_type.html" target="_self" style="color:inherit" class="link-type-1">More</a>
+
+
+				</div>
+			</div>
+						</div>
+			</div>
+				<div id="dh_style_01_1494209410075" class="view style_01 dh  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					<script></script>
+<div id="menu" class="menu menuStyle_1">
+	<div class="menuLayout">
+		<ul class="miniMenu columnSet">
+			<li class="leftBox">
+				<div class="nav"></div>
+				<div class="sidebar icoMenuSet" onclick="setDhListen(&#39;style_01&#39;,this)">=</div>
+				<div class="menuScroll">
+					<ul class="menuUlCopy" style="text-shadow: 2px 2px 8px #ff3300;font-size: 50px">
+		                    	<li id="hot" class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/Home">首页</a>		
+		                    	</li>
+		                    	<li class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/a1">气候的变迁</a>				
+		                    	</li>
+		                    	<li class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/j1">美食的散布</a>
+		                    	</li>
+		                    	<li class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/n1">时代的轨迹</a>
+		                    	</li>
+		                    	<li class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/o1">为你而生</a>
+		                    	</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<div class="menuUl_box columnSet">
+			<ul class="menuUl dflex" style="text-shadow: 2px 2px 8px #ff3300;font-size: 50px">
+                        <li id="hot" class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/Home">首页</a>
+		                </li>
+                    	<li class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/a1">气候的变迁</a>
+		                </li>
+                    	<li class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/j1">美食的散布</a>
+		                </li>
+                    	<li class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/n1">时代的轨迹</a>
+		                </li>
+                    	<li class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/o1">为你而生</a>
+		                </li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 菜单区域 End-->
+			</div>
+			</div>
+			<div id="user_style_05_1494239617174" class="view style_05 user  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					
+<!---菜单区域--->
+<!--弹窗登录 PopupLogin -->
+<div id="UserLoginMain" class="PopUpLogin PopUpLoginStyle_1">
+	<div id="popUpLogin-t" class="Login_before">
+		<ul class="v9_hide_if_logined">
+			<li class="showpLogin"><a href="http://demo.nicebox.cn/b971994570d5bb9b/index.html#" class="textSet" onclick="OnLogin(0);">登录</a></li>
+			<li class="w">|</li>
+			<li class="showpRegistered"><a href="javascript:void(0)" class="textSet" onclick="OnRegister(0);">注册</a></li>
+
+			
+			<div style="display:inline-block"><span id="userQQLi" class="LoginStatic"><img width="16" src="{% static './images/qq.png' %}" href="javascript:void(0)" title="QQ登录" id="idQQlogin" align="absmiddle"></span></div>
+			
+			
+			<div style="display:inline-block"><span id="userWXLi" class="LoginStatic"><img width="22" src="{% static './images/wx.png' %}" href="javascript:void(0)" title="微信登录" id="idWXlogin" align="absmiddle"></span></div>
+			
+		</ul>
+	</div>
+    <!--登录后显示-->
+    <div class="Login_after" style="display: none;"></div>
+</div>
+{% comment %} ../js/userloginView.js 
+../HTML/login_html_v9_diy.php
+{% endcomment %}
+<script src="{% static './js/userloginView.js' %}"></script>
+<script src="{% static './js/login_html_v9_diy.php' %}"></script>
+				</div>
+			</div>
+			
+<div id="share_style_04_1494239674105" class="view style_04 share  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					
+
+	<script type="text/javascript">
+		var jiathis_config={
+			summary:"首页",
+			shortUrl:false,
+			hideMore:false
+		}
+	</script>
+    {% comment %} ../js/jiathis_r.js {% endcomment %}
+	<script type="text/javascript" src="{% static './js/jiathis_r.js' %}" charset="utf-8"></script>
+				</div>
+			</div>
+<!--logo-->
+<div id="text_style_02_1494323888355" class="view style_02 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					Taste
+				</div>
+			</div>
+				
+<!--副标题-->
+<div id="image_style_01_1494381466058" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					<div class="imgStyle CompatibleImg">
+                    {% comment %} ="../HTML/image/logo_bg1.png {% endcomment %}
+			<img class="picSet link-type-" src="{% static './images/logo_bg1.png' %}" title="" alt="描述" id="imageModeShow">
+            </div>
+
+				</div>
+			</div>		
+<div id="text_style_10_1494209479803" class="view style_10 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+<div class="view_contents">
+					唯 爱与美食 &nbsp; &nbsp; 不可辜负
+</div>
+</div>
+		
+		
+		
+			</div>
+			</div>
+			</div>
+			</div>
+			
+			
+			<div id="layout_diy_1494206273" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+								<div id="div_includeBlock_1494210063041" class="view includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+			</div>
+			</div>
+			</div>
+			</div>
+			<div id="layout_1494210109514" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+			<div class="view_contents">
+			<div id="text_style_11_1494211007901" class="view style_11 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+			<div class="view_contents">
+					欢迎
+
+
+			</div>
+			</div>
+					<div id="div_includeBlock_1494377954656" class="view includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+									</div>
+			</div>
+					<div id="text_style_02_1494377901805" class="view style_02 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					Welcome
+
+
+		    </div>
+			</div>
+			</div>
+			</div>
+
+
+
+
+
+
+<div id="comm_layout_footer" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				
+</div>
+
+
+
+<style>
+   
+   #productList_style_01_1494240839910 .p_detail.pc,#productList_style_01_1494240839910 .p_name.pc {display:block;}
+   #productList_style_01_1494240839910 .p_detail.pad, #productList_style_01_1494240839910 .p_detail.mobile,#productList_style_01_1494240839910 .p_name.pad, #productList_style_01_1494240839910 .p_name.mobile {display:none;}
+
+   @media screen and (min-width:641px) and (max-width:1200px) {
+   #productList_style_01_1494240839910 .p_detail.pad,#productList_style_01_1494240839910 .p_name.pad {display:block;}
+   #productList_style_01_1494240839910 .p_detail.pc, #productList_style_01_1494240839910 .p_detail.mobile,#productList_style_01_1494240839910 .p_name.pc, #productList_style_01_1494240839910 .p_name.mobile {display:none;}
+   }
+   @media screen and (max-width:640px) {
+   #productList_style_01_1494240839910 .p_detail.mobile,#productList_style_01_1494240839910 .p_name.mobile {display:block;}
+   #productList_style_01_1494240839910 .p_detail.pc, #productList_style_01_1494240839910 .p_detail.pad,#productList_style_01_1494240839910 .p_name.pc, #productList_style_01_1494240839910 .p_name.pad {display:none;}
+   }
+    </style>
+<style>
+
+	/*产品状态  新品  推荐*/
+	#productList_style_01_1494240839910 .status{ color:red; display:inline-block; border:1px solid red; padding:0 2px; margin-right:5px; text-align: center; font-size:12px; font-family:'Times New Roman'; vertical-align: middle; text-indent: 0px;}
+
+</style>
+<style>
+	
+/* @media screen and (min-width: 1025px) {
+}
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+		}
+
+
+@media screen and (max-width: 640px) {
+		} */
+</style>
+<!-- 新分页 -->
+<style>
+	#productList_style_01_1494240839910 .page_btn{ font-size:14px; text-align: center;}
+	#productList_style_01_1494240839910 .page_btn .all_page{ display:inline-block; margin:0 10px; }
+	#productList_style_01_1494240839910 .page:hover{ background:red; color:white; cursor:pointer;}
+	#productList_style_01_1494240839910 .page_btn .cur{ background:red; color:white; cursor:pointer;}
+	#productList_style_01_1494240839910 .submit_div{ display: inline-block; }
+	
+	#productList_style_01_1494240839910 .page_btn input{ width:50px; margin:0 5px;}
+	#productList_style_01_1494240839910 .page_btn input:hover{ cursor:default; background:white; color:#333;}
+	#productList_style_01_1494240839910 .page_submit{margin-left:5px;}
+	#productList_style_01_1494240839910 .page{display:inline-block; border:none; background:white; text-align: center; width:auto; padding:0 15px; margin:0 .5px; height:auto; line-height:35px; box-sizing: border-box; -webkit-box-sizing: border-box; border:1px solid #e5e5e5;}
+	@media screen and (max-width:640px) {
+			#productList_style_01_1494240839910 .page_btn{ font-size:12px; }
+			#productList_style_01_1494240839910 .submit_div{ display:none; }
+		}
+
+			#productList_style_01_1494240839910 .page{width:auto; margin:0 5px 10px 5px; border-radius:5px;  }
+		@media screen and (max-width:640px) {
+			#productList_style_01_1494240839910 .page{line-height:30px; padding:0 13px;}
+		}
+	        
+     #productList_style_01_1494240839910  .showActivity {display: none !important;}
+            #productList_style_01_1494240839910  .btnaSet ,#productList_style_01_1494240839910  .btnaSet a{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+	</style>
+
+
+
+
+
+</body>
+</html>

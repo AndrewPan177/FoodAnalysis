@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+{% load staticfiles %}
+{% block content %}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>美食的散布</title>
+
+
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=3.0&ak=qvVzHfNPxlt0m68cYtcoEqGe65HOEGGt"></script>
+    <script type="text/javascript" src="{% static  'js/test_function.js' %}"></script>
+    
+    <!--用以 点聚合-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    
+    <!--echarts 引用文件-->
+    <script type="text/javascript" src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="{% static './js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/echarts-wordcloud.js' %}"></script>
+
+    <script src="{% static 'js/echarts-wordcloud.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    <script src="{% static 'js/supersized.3.2.7.min.js' %}"></script>
+    <script src="{% static 'js/supersized-init.js' %}"></script>
+
+
+
+
+<link rel="shortcut icon" type="image/x-icon" href="http://demo.nicebox.cn/b971994570d5bb9b/img/upimages/favicon.ico">
+<!-- 启用极速模式(webkit) -->
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+<!--  -->
+
+
+
+
+<meta name="KeyWords" content="联系">
+<meta name="description" content="联系">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="full-screen" content="yes">
+<!-- SEO友好提示 -->
+<meta name="applicable-device" content="pc,mobile">
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/js/comm/html5shiv.js"></script>
+<script type="text/javascript" src="/js/comm/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="{% static './js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './js/jquery.lazyload.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './js/jquery.nicescroll.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './js/ubox.js' %}" charset="utf-8"></script>
+</head>
+
+<body>
+<div style="display: none; z-index: 2147483640; top: 0px; left: 0px; position: fixed; height: 100%; width: 100%;"></div>
+<div id="idBox" class="lightbox" style="display: none; z-index: 2147483647;">	
+<div id="boxMain">
+		<div id="boxTopTitle">
+					<span id="boxName">显示框</span>
+								<span id="boxClose" title="关闭" onclick="box.Close();">×
+										</span></div>
+												<div id="boxContent">
+															<iframe id="showiframe" src="../HTML/image/saved_resource.html" frameborder="0" style="width:100%;"></iframe>
+																	</div>
+																		</div>
+																		</div>
+    <script type="text/javascript" src="{% static './js/wow.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static './js/010622.js' %}" charset="utf-8"></script>
+<!-- <link rel="stylesheet" type="text/css" href="css/comm/font/css/font-awesome.min.css"> -->
+    <link href="{% static './css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static './css/animate.min.css'%}">
+    <link rel="stylesheet" href="{% static './css/box.css'%}">
+    <link rel="stylesheet" href="{% static './css/010622.css'%}">
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+var DIY_WEBSITE_ID = "719";
+var DIY_JS_SERVER = "s143js.nicebox.cn";
+</script>
+
+
+	<script type="text/javascript">var Default_isFT = 0;</script>
+    <script type="text/javascript" src="{% static './js/transform.js' %}" charset="utf-8"></script>
+	
+			
+			
+<div id="layout_diy_1494233234" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+								<div id="image_style_01_1494233280647" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					<div class="imgStyle CompatibleImg">
+    <img class="picSet link-type-" src="{% static './images/20170509174102923.jpg' %}" title="" alt="描述" id="imageModeShow">	
+            </div>
+			</div>
+			</div>
+			<div id="div_includeBlock_1494233334484" class="view includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+				<div id="text_style_10_1494233465713" class="view style_10 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					唯 爱与美食 &nbsp; &nbsp; 不可辜负
+
+				</div>
+			    </div>
+			    
+			    
+
+<div id="dh_style_01_1494233485243" class="view style_01 dh  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+<div class="view_contents">
+<script></script>
+ <div id="menu" class="menu menuStyle_1">
+	<div class="menuLayout">
+		<ul class="miniMenu columnSet">
+			<li class="leftBox">
+				<div class="nav"></div>
+				<div class="sidebar icoMenuSet" onclick="setDhListen(&#39;style_01&#39;,this)">=</div>
+				<div class="menuScroll">
+					<ul class="menuUlCopy">
+		                    	<li class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/Home">首页</a>		
+		                    	</li>
+		                    	<li class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/a1">气候的变迁</a>				
+		                    	</li>
+		                    	<li id="hot" class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/j1">美食的散布</a>
+		                    	</li>
+		                    	<li class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/n1">时代的轨迹</a>
+		                    	</li>
+		                    	<li class="rflex"><a class="mainMenuSet" href="http://localhost:8000/Taste/o1">因你而生</a>
+		                    	</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<div class="menuUl_box columnSet">
+			<ul class="menuUl dflex">
+                        <li class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/Home">首页</a>
+		                </li>
+                    	<li class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/a1">气候的变迁</a>
+		                </li>
+                    	<li id="hot" class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/j1">美食的散布</a>
+		                </li>
+                    	<li class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/n1">时代的轨迹</a>
+		                </li>
+                    	<li class="rflex">
+		                    <a class="mainMenuSet" href="http://localhost:8000/Taste/o1">因你而生</a>
+		                </li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 菜单区域 End-->
+				</div>
+			</div>
+				
+				
+				
+					<div id="user_style_05_1494242173571" class="view style_05 user  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+<!---菜单区域--->
+
+
+ 
+
+<!--弹窗登录 PopupLogin -->
+<div id="UserLoginMain" class="PopUpLogin PopUpLoginStyle_1">
+	<div id="popUpLogin-t" class="Login_before">
+		<ul class="v9_hide_if_logined">
+			<li class="showpLogin"><a href="http://demo.nicebox.cn/b971994570d5bb9b/contact.html#" class="textSet" onclick="OnLogin(0);">登录</a></li>
+			<li class="w">|</li>
+			<li class="showpRegistered"><a href="javascript:void(0)" class="textSet" onclick="OnRegister(0);">注册</a></li>
+
+			
+			<div style="display:inline-block"><span id="userQQLi" class="LoginStatic"><img width="16" src="{% static './images/qq.png' %}" href="javascript:void(0)" title="QQ登录" id="idQQlogin" align="absmiddle"></span></div>
+			
+			
+			<div style="display:inline-block"><span id="userWXLi" class="LoginStatic"><img width="22" src="{% static './images/wx.png' %}" href="javascript:void(0)" title="微信登录" id="idWXlogin" align="absmiddle"></span></div>
+			
+		</ul>
+	</div>
+    <!--登录后显示-->
+    <div class="Login_after" style="display: none;"></div>
+</div>
+
+<script src="{% static './js/userloginView.js' %}"></script>
+<script src="{% static './js/login_html_v9_diy.php' %}"></script>
+		</div>
+	</div>
+					<div id="text_style_02_1494325759470" class="view style_02 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					Taste
+				</div>
+			</div>
+					<div id="image_style_01_1494382114434" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					<div class="imgStyle CompatibleImg">
+			<img class="picSet link-type-" src="{% static './images/logo_bg1.png'%}" title="" alt="描述" id="imageModeShow">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--登陆组件-->
+	
+	
+	
+	
+	
+	
+		<div id="layout_1494233265650" class="layout " data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+								<div id="div_includeBlock_1494234289532" class="view includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+			</div>
+			</div>
+			</div>
+			</div>
+		<div id="layout_1494242786328" class="layout " data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+								<div id="homelink_style_01_1494242787677" class="view style_01 homelink  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+					<ol class="breadcrumb location_style01">
+	<li>
+		<a class="textSet" href="http://localhost:8000/Taste/Home" onclick="">
+		首页</a>
+	</li>
+    <li>
+		<a class="textSet" href="http://localhost:8000/Taste/j1" onclick="">
+		餐饮分布</a>
+	</li>
+    <li>
+		<a class=" textSet" href="http://localhost:8000/Taste/k2" onclick="" >
+		餐饮热度</a>
+	</li>
+    <li>
+		<a class="active textSet" href="http://localhost:8000/Taste/l3" onclick=""style="text-shadow: 2px 2px 8px #ff3300">
+		城市の味道</a>
+	</li>
+    <li>
+		<a class="textSet" href="http://localhost:8000/Taste/m4" onclick="">
+		城市の印象</a>
+	</li>
+			
+
+</ol>		
+</div>
+</div>
+</div>
+</div>
+<!--横向导航栏-->
+
+
+
+<!--功能实现容器-->
+<div id="layout_1494243362165" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1" style="height: 900px; ">
+ 
+ 
+ 
+ <div id="container" style="float:left;width:65%;height:100%;"></div>      
+       <div id="container2" style="float:left;width:35%;height:100%">
+        <div id="c1" style="height:50%;background:#8dc1a9"></div>
+        <div id="c2" style="height:50%;background:#8dc1a9"></div>
+       </div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=h8Otcfn8jVFGCe6GwA9GxfiEngWEDyKL"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var dom0 = document.getElementById("container0");
+var dom1 = document.getElementById("c1");
+var dom2 = document.getElementById("c2");
+var myChart = echarts.init(dom);
+//var myChart0 = echarts.init(dom0);
+var myChart1 = echarts.init(dom1);
+var myChart2 = echarts.init(dom2);
+var app = {};
+//style="width:65%;height:100%"
+option = null;
+
+var data = [
+{ name:'北京',datas:['4','3','4','5','5','6','6','7','星巴克','135','luckin coffee瑞幸咖啡','133','北京稻香村','100','好利来','87','CoCo都可','83','呷哺呷哺','82','1点点','74','味多美','74','百果园','73','西贝莜面村','67','眉州小吃','61','哈根达斯','57','热辣生活','56','绿茶餐厅','51','汤城小厨','50','稻香村','49','韩时烤肉','49','云海肴云南菜','48','渝是乎酸菜小鱼','48','粒上皇','46']},
+{ name:'长春',datas:['3','3','5','3','10','6','4','7','果婆婆','83','吉妈妈手擀面','64','李先生牛肉面','52','City1+1城市比萨','51','地利生鲜','47','老昌春饼','42','派乐汉堡','38','肯德基','37','华莱士','36','郭记烤肉','32','果婆婆水果店','30','好利来','30','鲜果时间','30','小姑娘冰淇淋','29','喜家德虾仁水饺','28','中之杰食品','26','鲜果时光','26','汉堡王','25','果语堂','25','堕落小龙虾','24']},
+{ name:'长沙',datas:['8','8','1','4','2','10','2','8','良品铺子','151','绿叶水果','132','茶颜悦色','99','CoCo都可','58','书亦烧仙草','57','零食很忙','53','老长沙龙虾馆','49','仟吉西饼','44','颜家辣酱鸭','43','luckin coffee瑞幸咖啡','42','罗莎蛋糕','40','尊宝比萨','38','粒上皇','37','大斌家串串火锅','36','必胜客','36','马里奥饼店','35','星巴克','34','张新发','32','肯德基','31','兰州拉面','31']},
+{ name:'成都',datas:['10','10','3','3','4','7','0','4','良品铺子','159','星巴克','131','CoCo都可','112','好利来','105','书亦烧仙草','91','luckin coffee瑞幸咖啡','89','百果园','77','丸摩堂','74','钢管厂五区小郡肝串串香','73','嘎嘎鸭脑壳','62','一點點','61','茶百道','57','一只酸奶牛','54','必胜客','47','1點點','47','双流老妈兔头','45','烤匠麻辣烤鱼','41','良木缘咖啡西餐','40','爱达乐蛋糕','40','马路边边麻辣烫','37']},
+{ name:'重庆',datas:['9','9','1','4','0','8','1','4','一只酸奶牛','188','luckin coffee瑞幸咖啡','108','百果园','108','守柴炉烤鸭','103','华莱士','79','星巴克','76','鲜丰水果','74','CoCo都可','74','好利来','67','秦云老太婆摊摊面','48','沁园','48','大通冰室','44','江苏炒货','41','汉堡王','40','尊宝比萨','38','泰熙家','37','必胜客','36','元祖食品','33','谊品生鲜','31','书亦烧仙草','30']},
+{ name:'福州',datas:['1','1','3','7','2','4','4','1','华莱士','135','麦当劳','72','85度C','66','兰州拉面','64','1點點','60','周麻婆','56','luckin coffee瑞幸咖啡','53','醉得意','52','星巴克','52','莆田卤面','51','清口清汤面','44','玛格利塔','43','芝根芝底','39','澳牛鲜奶吧','38','向阳坊','36','小叫天泡椒活田鸡','35','肯德基','34','华丰贺氏','33','CoCo都可','33','安德鲁森','31']},
+{ name:'广州',datas:['0','2','2','6','6','2','10','2','百果园','192','尊宝比萨','142','星巴克','130','麦当劳','101','luckin coffee瑞幸咖啡','99','绝味鸭脖','98','粒上皇','90','钱大妈','73','喜茶','68','银记肠粉店','67','堕落小龙虾','63','CoCo都可','59','紫燕百味鸡','53','久久丫','51','点都德','48','九毛九 西北菜·山西面','46','煌上煌','45','甘思咪哚·云南菜','40','叁拾加水果专家','39','1點點','35']},
+{ name:'贵阳',datas:['6','7','7','5','3','4','2','6','惠诚滋知','77','羊城西饼','41','沁园','40','贵州龙','34','CoCo都可','24','华莱士炸鸡汉堡','22','书亦烧仙草','21','大通冰室','19','快乐柠檬','19','一只酸奶牛','18','华莱士','16','都市新大新豆米火锅','14','好利来','14','鹿角巷','13','星巴克','12','宜北町','12','CS芝士蛋糕','12','贝克汉堡','12','享甜','10','元祖食品','10']},
+{ name:'哈尔滨',datas:['4','4','4','4','9','3','3','6','喜家德虾仁水饺','69','五爷拌面','65','肯德基','51','地利生鲜','48','大庄园肉业','41','果果家','40','米旗','38','老鼎丰','36','好利来','35','郎一家传统麻辣面','32','正居鲜面','31','艾可奇汉堡','30','鲜果时光','24','麦当劳','23','呷哺呷哺','23','月亮八珍','23','必胜客','22','汪世兴京味烤鸭','22','一挑香牛肉面','21','东方饺子王','21']},
+{ name:'海口',datas:['1','1','3','6','2','0','4','1','百果园','70','华莱士','60','兰州拉面','37','麦栗工坊','35','益禾堂','35','十八碗','29','重庆小面','28','CoCo都可','27','欣奇西点蛋糕','26','琳琅烘焙','26','嘉艺坊蛋糕','21','肯德基','20','江西瓦罐煨汤','19','匠子烤鱼','18','众意水果','17','新一番三文鱼寿司','17','叁拾加水果专家','16','兰州牛肉拉面','16','星食茶','15','重庆饭店','15']},
+{ name:'杭州',datas:['2','2','4','9','4','3','4','0','星巴克','220','鲜丰水果','220','可莎蜜兒','123','一鸣真鲜奶吧','118','luckin coffee瑞幸咖啡','101','CoCo都可','98','1点点','94','来伊份','93','必胜客','69','肯德基','57','一点点','52','百果园','49','九月生活','46','零零食','46','麦当劳','43','外婆家','40','新白鹿餐厅','39','新丰小吃','38','知味观','37','厝内小眷村','37']},
+{ name:'合肥',datas:['4','1','2','4','5','6','3','4','鲜丰水果','130','来伊份','85','卡旺卡','68','百果园','66','乐大嘴零食公园','58','岸香咖啡','56','巴莉甜甜','54','必胜客','53','北京片皮烤鸭','53','老乡鸡','45','仟吉西饼','44','重庆鸡公煲','44','芝根芝底','44','炉桥手擀面','42','CoCo都可','41','粒上皇','40','生鲜传奇','40','肯德基','36','某一巷砂锅','36','派客汉堡','34']},
+{ name:'呼和浩特',datas:['4','2','1','3','4','5','1','6','不老神鸡','56','德顺源','44','意林','44','老绥元烧麦','33','九田家果木烤肉','31','燕京精酿啤酒屋','29','寂寞的豆芽','28','贝多美乐','26','绝味鸭脖','26','华香面粥','26','蒙A海鲜烧烤','25','鲜果时光','25','张亮麻辣烫','22','成都美食','22','清晨源','22','龙门花甲','22','鲜果时间','21','西北狼大盆骨','19','鲜烤鲜麦','16','阿堡仔炸鸡汉堡','16']},
+{ name:'济南',datas:['3','4','5','3','5','6','2','10','阿水大杯茶','112','熙顺紫菜包饭','51','重庆鸡公煲','45','luckin coffee瑞幸咖啡','38','益康食品','35','果唯伊','34','CoCo都可','32','高第街56号港式餐厅','31','三江源牛肉面','30','蜜雪冰城','30','好利来','29','薛记炒货','29','阿堡仔炸鸡汉堡','28','东阿阿胶','27','青阳炒鸡','26','love cake爱的礼物','26','华莱士','25','喜家德虾仁水饺','24','星巴克','24','来伊份','23']},
+{ name:'昆明',datas:['6','3','6','2','1','4','5','7','鍢夊崕楗煎眿','107','鍖椾含鐑ら腑','94','蹇箰鍘ㄥ笀','64','闈㈠寘宸ュ潑','44','閲嶅簡灏忛潰','38','鍏板窞鎷夐潰','34','澶х淮楗搧','34','鏋滃敮浼�','33','鑰佷笢绮ョ殗','31','瀹环楗煎眿','29','澶栧﹩鍛抽亾','28','鐧炬灉鍥�','28','鍢夊崕椴滆姳楗�','25','鏄熷反鍏�','25','闆叞椴滃ザ灞�','24','5瀹跺崵闈㈤','23','鍫曡惤灏忛緳铏�','22','闄曡タ灏忓悆','21','绫冲厹绱背闇�','20','鍗庤幈澹�','20']},
+{ name:'兰州',datas:['5','2','4','1','4','2','3','3','果果家','61','AILI爱的礼物','45','正新鸡排','41','绝味鸭脖','38','法贝德','36','华莱士','36','蜜雪冰城','36','安旗西饼','31','阿堡仔炸鸡汉堡','29','清真红房子西饼屋','25','可百可','20','果唯伊','18','方鑫粮店','17','兰州三维便民服务自助终端','16','马三洋芋片','16','静宁烧鸡','16','好利来','15','花之林','15','马有布牛肉面','15','德克士','14']},
+{ name:'拉萨',datas:['5','3','2','2','3','5','4','5','果麦','11','德克士','10','乐山大众串串香','8','无敌飘香烧烤','8','派乐汉堡','7','杨铭宇黄焖鸡米饭','7','咖嚓吉必鲁固茶馆','6','无敌烧烤','6','绵阳米粉','6','扎西茶馆','5','德吉茶馆','5','四海花甲米线','5','荣福居黄焖鸡米饭','5','老麻抄手','5','惠民肉食直销店','5','张阿姨奶茶','5','莲花缘藏餐','4','川韵小厨','4','老地方川菜馆','4','鹊吉藏式自助火锅','4']},
+{ name:'南昌',datas:['7','6','3','4','2','9','7','4','良品铺子','176','华莱士','113','CoCo都可','92','兰州拉面','79','百果园','74','不出名火锅','73','成都担担面','55','卡拉多','46','果唯伊','39','煌上煌','35','紫燕百味鸡','31','肯德基','30','辣椒炒肉','28','雪贝尔','25','正新鸡排','24','清真兰州拉面','24','周黑鸭','22','东南饼庄','22','农家菜馆','22','芝心实億披萨','21']},
+{ name:'南京',datas:['3','3','2','9','5','7','5','4','来伊份','168','CoCo都可','161','星巴克','132','百果园','126','luckin coffee瑞幸咖啡','114','一鸣真鲜奶吧','95','座上客','78','龙门花甲','73','零食工坊','63','厝内小眷村','62','必胜客','61','素匠泰茶','56','蓝湾咖啡','53','肯德基','42','N多寿司','41','DQ','40','回味鸭血粉丝汤','38','汉堡王','37','熊姬手作茶物','37','巴黎贝甜','37']},
+{ name:'南宁',datas:['6','0','9','2','1','5','3','3','三品王','68','粉之都','57','石埠乳业','55','范记饼屋','53','察理王子','38','益禾堂','37','柳螺香','31','螺公堂','31','蒂丽雪斯蛋糕','31','栖木咖啡','30','粉之都桂林米粉','27','百果园','27','肯德基','24','皇氏新鲜屋','24','梁小糖','23','百香林西点','23','龙门花甲','22','乐多多炸鸡','20','五谷渔粉','20','大维饮品','20']},
+{ name:'上海',datas:['2','4','4','10','2','7','6','1','鏉ヤ紛浠�','340','鐧炬灉鍥�','163','瑗胯礉鑾滈潰鏉�','74','鍘濆唴灏忕湻鏉�','64','鏄熷反鍏�','63','绾㈠疂鐭�','56','娈垫皬榫欒櫨','51','1鐐圭偣','50','闈掕姳妞掔爞閿呴奔','48','鏂扮煶鍣ㄧ儰鑲�','45','婧洦瑙傞吀鑿滈奔','45','涓滃寳浜哄','45','鍙挌涔拌彍','45','娴峰簳鎹炵伀閿�','44','宸﹀涵鍙抽櫌椴滅墰鑲夌伀閿�','44','椴滀赴姘存灉','44','閲戞椂浠ｉ『椋庡ぇ閰掑簵','42','鍜屽簻鎹為潰','42','bluefrog钃濊洐','40','绮掍笂鐨�','39']},
+{ name:'沈阳',datas:['5','4','3','2','9','4','4','9','华莱士','81','好利来','70','町上寿司','57','小四川水煮鱼','48','鼎汇丰烧烤火锅超市','47','邵汇大虾','47','喜家德虾仁水饺','45','地利生鲜','42','吉野家','41','麦当劳','36','妈妈故事米线','34','星巴克','33','苏氏牛肉面','32','肯德基','29','必胜客','28','藤崎寿司','27','申记串道','26','姐弟俩土豆粉','25','小锅饭豆腐馆','25','大鯎寿司','25']},
+{ name:'石家庄',datas:['4','1','2','3','6','6','5','6','兰州拉面大盘鸡','119','大喜龙虾','65','北京果木烤鸭','47','呷哺呷哺','38','华莱士','38','N多寿司','38','好利来','34','蜜雪冰城','33','老北京果木烤鸭','33','肯德基','32','重庆鸡公煲','32','举个栗子','31','北京烤鸭','29','米莎贝尔','29','果唯伊','29','东北小酒馆','29','家常菜馆','29','韩红石板肉','26','洛杉奇','25','麦当劳','24']},
+{ name:'太原',datas:['3','1','8','4','8','4','6','6','岭峥炒栗','78','junbao自助小火锅','71','蜜雪冰城','59','顺溜削面','57','采栗人','51','九牛私家牧场','45','今度蛋糕','41','双合成','38','大孩龙虾','37','六味斋','36','百果园','36','今度烘焙','35','家常菜馆','34','好利来','32','黑洪堂','30','町上寿司','28','果唯伊','26','兰州拉面','25','瑞氏大盘鸡','24','运城大盘鸡','23']},
+{ name:'天津',datas:['3','3','2','3','4','5','7','9','好利来','133','星巴克','125','沪上阿姨','114','luckin coffee瑞幸咖啡','114','必胜客','66','津乐园','60','呷哺呷哺','57','麦当劳','51','CoCo都可','48','汉堡王','41','愉肴麻辣香锅','41','五福西点','40','巴黎贝甜','37','土大力','36','友达面馆','34','九田家黑牛烤肉','34','萨莉亚','33','美玲拉面','30','肘子酥','30','槐店·王婆大虾','30']},
+{ name:'武汉',datas:['7','6','2','3','3','8','4','3','良品铺子','432','周黑鸭','392','百果园','207','皇冠蛋糕','183','仟吉','146','星巴克','120','CoCo都可','118','冷记卤品','106','华莱士','89','紫燕百味鸡','85','麦当劳','78','luckin coffee瑞幸咖啡','78','小胡鸭','74','必胜客','73','鑫小城故事','71','绝味鸭脖','65','一点点','60','吾饮良品','58','一芳台湾水果茶','52','醉得意','47']},
+{ name:'乌鲁木齐',datas:['4','4','0','0','5','3','5','2','吾饮良品','46','魔味鸭','46','AILI爱的礼物','45','正新鸡排','41','果果家','30','吴佳米粉','27','麦趣尔','20','哦吼耶新疆烤包子','20','八点半','18','百富烤霸','17','阿姨很芒','17','啊臻味道米粉','17','答案茶','17','葡萄树','16','乔治香颂','16','果唯伊','16','心岸share','15','丰惠源抓饭','14','德克士','13','我家小厨','13']},
+{ name:'西安',datas:['6','7','10','2','3','6','8','5','星巴克','70','泰熙家','59','luckin coffee瑞幸咖啡','51','米旗','50','绝味鸭脖','50','必胜客','45','一只酸奶牛','42','湖南土菜馆','41','蜜雪冰城','41','好利来蛋糕世界','37','御品轩','36','小竹签烤肉','32','CoCo都可','32','华莱士','32','老蜂农','31','老狼大盘鸡','31','九田家黑牛烤肉','29','堕落小龙虾','28','外婆印象','27','汉堡王','26']},
+{ name:'西宁',datas:['4','4','5','3','1','7','4','5','爱的礼物蛋糕','24','逸山伍自转小火锅','22','正新鸡排','21','塞奇西饼','16','果唯伊','16','龙门花甲','13','青海土火锅','12','疯狂烤翅','12','湖南大碗菜','12','德克士','12','绝味鸭脖','12','源武黑鸭','12','老北关面片','11','唐汪面片','11','北家姓转转小火锅','9','大团结柴火鸡','9','天府人家','9','牦牛大骨汤','9','灌县老妈砂锅串串','8','美渝石锅鱼','8']},
+{ name:'银川',datas:['3','6','2','2','3','5','3','2','麦尔乐','36','AILI爱的礼物','17','袁记串串香','15','武汉鸭脖王','15','黑馋鸭','15','麦克风','14','华莱士','14','派乐汉堡','14','黑谷鸭','14','七公江湖烤翅','13','甜蜜蜜蛋糕','13','德克士','13','绝味鸭脖','13','梦幻雪','12','海生炒面','12','朱老五酸菜刀削面','12','大口味鸭霸王','12','正新鸡排','12','动力鸡车','11','御味黑鸭','11']},
+{ name:'郑州',datas:['3','4','2','2','4','6','4','5','良品铺子','115','老狼大盘鸡','107','百果园','101','蜜雪冰城','97','CoCo都可','78','嘿糖鲜奶茶饮','69','好想你','65','仟吉西饼','61','阿利茄汁面','57','傻子张大盘鸡','52','麦加美汉堡','49','丹尼斯全日鲜','49','N多寿司','49','DQ','45','北京烤鸭','43','西部大盘鸡','40','德克士','38','星巴克','36','必胜客','32','王婆大虾','32']},
+
+
+];
+var geoCoordMap = {
+    '北京':[116.404158,39.910072],
+    '长春':[125.335126,43.887924],
+    '长沙':[113.019875,28.200096],
+    '成都':[104.072363,30.663316],
+    '重庆':[106.586184,29.566172],
+    
+    '福州':[119.303063,26.082110],
+    '广州':[113.269007,23.137622],
+    '贵阳':[106.700675,26.605123],
+    '哈尔滨':[126.668317,45.748027],
+
+    '海口':[110.323850,20.015648],
+    '杭州':[120.189055,30.248535],
+    '合肥':[117.323834,31.891263],
+    '呼和浩特':[111.709591,40.811634],
+    '济南':[117.034643,36.687324],
+
+    '昆明':[102.713812,25.049759],
+    '兰州':[103.825792,36.050377],
+    '拉萨':[91.125180,29.660633],
+    '南昌':[115.925653,28.667885],
+    '南京':[118.759829,32.068353],
+
+    '南宁':[108.501840,22.792313],
+    '上海':[121.475605,31.223183],
+    '沈阳':[123.442681,41.785837],
+    '石家庄':[114.521532,38.048312],
+    '太原':[112.558139,37.876773],
+
+    '天津':[117.217271,39.142006],
+    '武汉':[114.301131,30.651394],
+    '乌鲁木齐':[87.544978,43.878506],
+    '西安':[108.953493,34.273184],
+    '西宁':[101.762493,36.636514],
+    '银川':[106.207537,38.501852],
+    '郑州':[113.665365,34.752235]
+};
+
+
+
+//坐标点投影
+var convertData = function (data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+            res.push({
+                name: data[i].name,
+                datas:data[i].datas,
+                value: geoCoord.concat(data[i].value)
+            });
+        }
+    }
+    return res;
+};
+
+option = {
+    /*title: {
+        text: '全国气象站点可视化',
+        textStyle:{
+          fontSize: 25,//字体大小
+         },
+        subtext: '数据来源：中国气象数据网',
+        sublink: 'http://data.cma.cn/',
+        left: 'center'
+    },
+    */
+    tooltip : {
+        trigger: 'item',
+        /*formatter:function(params){
+                    //定义一个res变量来保存最终返回的字符结果,并且先把地区名称放到里面
+                    var res=params.name;
+                    //定义一个变量来保存series数据系列
+                    var myseries=option.series;
+                    //循环遍历series数据系列
+                    for(var i=0;i<myseries.length;i++){
+                        //在内部继续循环series[i],从data中判断：当地区名称等于params.name的时候就将当前数据和名称添加到res中供显示
+                        for(var k=0;k<myseries[i].data.length;k++){
+                            //console.log(myseries[i].data[k].name);
+                            //如果data数据中的name和地区名称一样
+                            if(myseries[i].data[k].name==params.name){
+                                //将series数据系列每一项中的name和数据系列中当前地区的数据添加到res中
+                                res+=myseries[i].name+'<br />'+'海拔高度：'+myseries[i].data[k].datas[0]+'<br />'+'所属行政区：'+myseries[i].data[k].datas[1]+'<br />'+
+                                '经纬度：'+myseries[i].data[k].value[0]+','+myseries[i].data[k].value[1]+'<br />';
+                            }
+                        }
+                    }
+                    //返回res
+                    //console.log(res);
+                    return res;                
+                },
+                */
+        
+
+
+        
+    },
+    bmap: {
+        center: [104.114129, 37.550339],
+        zoom: 5,
+        roam: true,
+        mapStyle: {
+            styleJson: [
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": {
+                            "color": "#8dc1a9"
+                        }
+                    },
+                    {
+                        "featureType": "land",
+                        "elementType": "all",
+                        "stylers": {
+                            "color": "#eedd78"
+                        }
+                    },
+                    {
+                        "featureType": "boundary",
+                        "elementType": "geometry",
+                        "stylers": {
+                            "color": "#26c0c0"
+                        }
+                    },
+                    {
+                        "featureType": "railway",
+                        "elementType": "all",
+                        "stylers": {
+                            "color": "#9bca63"
+                        }
+                    },
+                    {
+                        "featureType": "highway",
+                        "elementType": "geometry",
+                        "stylers": {
+                            "color": "#004981"
+                        }
+                    },
+                    {
+                        "featureType": "highway",
+                        "elementType": "geometry.fill",
+                        "stylers": {
+                            "color": "#005b96",
+                            "lightness": 1
+                        }
+                    },
+                    {
+                        "featureType": "highway",
+                        "elementType": "labels",
+                        "stylers": {
+                            "visibility": "off"
+                        }
+                    },
+                    {
+                        "featureType": "arterial",
+                        "elementType": "geometry",
+                        "stylers": {
+                            "color": "#004981"
+                        }
+                    },
+                    {
+                        "featureType": "arterial",
+                        "elementType": "geometry.fill",
+                        "stylers": {
+                            "color": "#00508b"
+                        }
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": {
+                            "visibility": "off"
+                        }
+                    },
+                    {
+                        "featureType": "green",
+                        "elementType": "all",
+                        "stylers": {
+                            "color": "#056197",
+                            "visibility": "off"
+                        }
+                    },
+                    {
+                        "featureType": "subway",
+                        "elementType": "all",
+                        "stylers": {
+                            "visibility": "off"
+                        }
+                    },
+                    {
+                        "featureType": "manmade",
+                        "elementType": "all",
+                        "stylers": {
+                            "visibility": "off"
+                        }
+                    },
+                    {
+                        "featureType": "local",
+                        "elementType": "all",
+                        "stylers": {
+                            "visibility": "off"
+                        }
+                    },
+                    {
+                        "featureType": "arterial",
+                        "elementType": "labels",
+                        "stylers": {
+                            "visibility": "off"
+                        }
+                    },
+                    {
+                        "featureType": "boundary",
+                        "elementType": "geometry.fill",
+                        "stylers": {
+                            "color": "#029fd4"
+                        }
+                    },
+                    {
+                        "featureType": "building",
+                        "elementType": "all",
+                        "stylers": {
+                            "color": "#1a5787"
+                        }
+                    },
+                    {
+                        "featureType": "label",
+                        "elementType": "all",
+                        "stylers": {
+                            "visibility": "off"
+                        }
+                    }
+            ]
+        }
+    },
+    series : [
+        {
+            //name: '气象站点信息',
+            type: 'effectScatter',
+            coordinateSystem: 'bmap',
+            data: convertData(data),
+           
+            symbolSize: function (val) {
+                return 8;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            label: {
+                normal: {
+                    formatter: '{b}',
+                    position: 'right',
+                    show: true
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#dd6b66',
+                    shadowBlur: 8,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        }
+    ]
+
+};;
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+
+}
+
+myChart.on('click', function (params) {
+    var res=params.name; 
+    var myseries=option.series;
+    //循环遍历series数据系列
+    for(var i=0;i<myseries.length;i++){
+        //在内部继续循环series[i],从data中判断：当地区名称等于params.name的时候就将当前数据和名称添加到res中供显示
+        for(var k=0;k<myseries[i].data.length;k++){
+            //console.log(myseries[i].data[k].name);
+            //如果data数据中的name和地区名称一样
+             if(myseries[i].data[k].name==params.name){
+                var data1 = [myseries[i].data[k].datas[0],myseries[i].data[k].datas[1],myseries[i].data[k].datas[2],myseries[i].data[k].datas[3],
+                myseries[i].data[k].datas[4],myseries[i].data[k].datas[5],myseries[i].data[k].datas[6],myseries[i].data[k].datas[7]];
+
+                var data2 = [myseries[i].data[k].datas[8],myseries[i].data[k].datas[10],myseries[i].data[k].datas[12],myseries[i].data[k].datas[14],
+                myseries[i].data[k].datas[16],myseries[i].data[k].datas[18],myseries[i].data[k].datas[20],myseries[i].data[k].datas[22],myseries[i].data[k].datas[24],myseries[i].data[k].datas[26],];
+
+                var data3 = [myseries[i].data[k].datas[9],myseries[i].data[k].datas[11],myseries[i].data[k].datas[13],myseries[i].data[k].datas[15],
+                myseries[i].data[k].datas[17],myseries[i].data[k].datas[19],myseries[i].data[k].datas[21],myseries[i].data[k].datas[23],myseries[i].data[k].datas[25],myseries[i].data[k].datas[27],];
+
+                option1 = {
+                    title: {
+                        text:'所选城市数量前十连锁店品牌',
+                        //subtext: '2016年气象数据统计',
+                        x:'50%',
+                        y: '2%',
+                        textAlign: 'center',
+                        textStyle:{
+                           fontSize: 18,//字体大小
+                        }
+                     }, 
+    grid: {
+        top: '20%',
+        left:'15%',
+        width: '85%',
+        bottom: '12%',
+        right: '5%'
+    },
+    xAxis: {
+        type: 'value',
+        
+        splitLine: {
+            show: false
+        }
+    },
+    yAxis: {
+        type: 'category',
+        data: data2,
+        axisLabel: {
+            interval: 0,
+            rotate: 30
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    series: {
+        type: 'bar',
+        stack: 'chart',
+        color: '#d7504b',
+        z: 3,
+        label: {
+            normal: {
+                position: 'right',
+                color: '#fad860',
+                fontSize: 15,
+                textShadowColor: '#333',
+                textShadowBlur: 10,
+                textShadowOffsetX: 5,
+                textShadowOffsetY: 5,
+                show: true
+            }
+        },
+        data: data3
+    }, 
+
+    
+                }
+
+
+
+                option2 = {
+                    title: {
+                        text:'所选城市口味及烹饪方式偏好',
+                        //subtext: '2016年气象数据统计',
+                        x:'50%',
+                        y: '2%',
+                        textAlign: 'center',
+                        textStyle:{
+                           fontSize: 18,//字体大小
+                        }
+                     },
+      tooltip: {
+          trigger: 'item',
+          //formatter:'{b}</br> {c}',
+          textStyle: {
+            color: '#fff',
+            fontSize: 25,
+            textShadowColor: '#333',
+            textShadowBlur: 10,
+            textShadowOffsetX: 5,
+            textShadowOffsetY: 5,
+            },
+      },
+      radar: {
+          radius: '60%',
+          splitNumber: 4,
+          axisLine: {
+              lineStyle: {
+                  color: '#fff',
+                  opacity: 0.8
+              }
+          },
+          splitLine: {
+              lineStyle: {
+                  color: '#fff',
+                  opacity: 0.5
+              }
+          },
+          splitArea: {
+              areaStyle: {
+                  color: 'rgba(127,95,132,.3)',
+                  opacity: 1,
+                  shadowBlur: 45,
+                  shadowColor: 'rgba(0,0,0,.5)',
+                  shadowOffsetX: 0,
+                  shadowOffsetY: 15,
+              }
+          },
+          name: {
+            
+                show: true,
+                color: '#fad860',
+                fontSize: 18,
+                textShadowColor: '#333',
+                textShadowBlur: 10,
+                textShadowOffsetX: 5,
+                textShadowOffsetY: 5,
+            
+        },
+        indicator: [
+			           { name: '油', max: 10},
+                       { name: '辣', max: 10},
+                       { name: '酸', max: 10},
+                       { name: '甜', max: 10},
+                       { name: '炖', max: 10},
+                       { name: '炒', max: 10},
+                       { name: '蒸', max: 10},
+                       { name: '炸', max: 10}
+			           
+			        ]
+      },
+      series: [{
+          name: '阅读类别统计',
+          type: 'radar',
+          symbolSize: 0,
+          areaStyle: {
+              normal: {
+                  shadowBlur: 13,
+                  shadowColor: 'rgba(0,0,0,.2)',
+                  shadowOffsetX: 0,
+                  shadowOffsetY: 10,
+                  opacity: .8
+              }
+          },
+          
+          data: [ {
+              value: data1,
+              name: '2018年',
+          }]
+      }],
+      color: '#d7504b',
+      
+
+                }
+                myChart1.setOption(option1, true); 
+                myChart2.setOption(option2, true); 
+
+             }
+        }
+    }
+});
+
+      </script>
+			
+				
+				
+
+{% endblock %}
+				
+</div>
+
+<!--foot组件-->	
+<div id="comm_layout_footer" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+			
+			</div>
+		
+</body>
+</html>

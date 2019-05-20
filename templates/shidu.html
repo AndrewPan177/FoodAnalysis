@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kriging</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/4.11/esri/themes/dark/main.css">
+    <script type="text/javascript" src="https://js.arcgis.com/4.11/"></script>
+    <style>
+      html, body, #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      #sidebar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 85%;
+        width: 320px;
+        font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        overflow-y: auto;
+      }
+
+      .label {
+        color: white;
+      }
+
+      #HotFoodMapButton {
+        font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        border: none;
+        background-color: rgba(229, 89, 52, 0.75);
+        color: #fff;
+        margin: 1px;
+        width: 50%;
+        padding: 10px;
+        overflow: auto;
+        text-align: center;
+        cursor: pointer;
+        font-size: 1em;
+      }
+    </style>
+</head>
+<body>
+	<script type="text/javascript">
+		require([
+			"esri/Map",
+			"esri/views/MapView",
+			"esri/tasks/Geoprocessor",
+			"esri/widgets/Legend",
+			"esri/layers/support/ImageParameters"
+			], function(Map, MapView, Geoprocessor, Legend, ImageParameters) {
+				document.getElementById("HotFoodMapButton").addEventListener("click", Kriging);
+				
+				var message = document.getElementById("message");
+
+				var map = new Map({
+					basemap: "streets-vector"
+				});
+
+				var view = new MapView({
+					container: "viewDiv",
+					map: map,
+					center: [110.812, 35.474],
+					zoom: 4
+				});
+
+				var gpUrl = "http://localhost:6080/arcgis/rest/services/Shidu/GPServer/shidu";
+
+				var gp = new Geoprocessor(gpUrl);
+
+				gp.outSpatialReference = {
+					wkid: 2432
+				};
+
+				function Kriging() {
+					var params = {
+						final: "final"
+					};
+
+					cleanup();
+					gp.submitJob(params).then(drawResultData, errBack, progTest);
+				}
+
+				/*
+				function buildDefinitionQuery() {
+					var defQuery;
+
+					var startDate = "1998-01-01 00:00:00";
+					var endDate = "1998-05-31 00:00:00";
+					var def = [];
+					def.push(
+						"(Date >= date '" + startDate + "'and Date <= date'" + endDate + "')"
+					);
+
+					if (def.length > 1) {
+						defQuery = def.join("AND");
+					}
+
+					return defQuery;
+				}
+				*/
+
+				function cleanup() {
+					map.layers.forEach(function(layer, i) {
+						if (layer.title == "HotFoodMap") {
+							map.layers.remove(layer);
+						}
+					});
+				}
+
+				function drawResultData(result) {
+					message.innerText = "Adding MapImageLayer to the map...";
+					var imageParams = new ImageParameters({
+						format: "png32",
+						imageSpatialReference: {
+							wkid: 2432
+						},
+						dpi: 300
+					});
+
+					var resultLayer = gp.getResultMapImageLayer(result.jobId);
+					resultLayer.opacity = 0.75;
+					resultLayer.title = "HotFoodMap";
+
+					map.layers.add(resultLayer);
+
+					
+					resultLayer.on("layerview-create", function() {
+						message.innerText = "Job status: 'job-succeeded'";
+						
+						var legend = new Legend({
+							view: view,
+							container: "legendDiv"
+						});
+						
+					});
+
+				}
+
+				function progTest(value) {
+					message.innerText = "Job status:" + "'" + value.jobStatus + "'";
+					console.log(value, jobStatus);
+				}
+
+				function errBack(error) {
+					message.innerText = "";
+					console.log("gp error: ", error);
+				}
+			});
+	</script>
+
+	<div id="viewDiv">
+    	<div id="sidebar" class="esri-widget">
+        	<div id="text">
+          		<div id="info">
+            		<div style="padding-bottom:20px; padding-left:10px;">
+              			<br />
+              			<label class="label">From: 01/01/1998</label><br />
+              			<br /><br />
+              			<label class="label">To: 05/31/1998</label><br />
+            		</div>
+            		<div align="center">
+            			<br />
+            			<button id="HotFoodMapButton" class="esri-widget">
+            				Create Hot Food Map
+             			</button>
+            		</div>
+            		<div style="padding-bottom:20px; padding-left:10px;">
+              			<br /><br />
+              			<label id="message" class="label"></label>
+            		</div>
+            		<div id="legendDiv" class="esri-widget"></div>
+        		</div>
+    		</div>
+      	</div>
+    </div>
+</body>
+</html>

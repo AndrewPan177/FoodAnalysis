@@ -1,0 +1,6312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=3.0&ak=qvVzHfNPxlt0m68cYtcoEqGe65HOEGGt"></script>
+    <script type="text/javascript" src="../../static/js/mapv.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/js/mapv.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <style type="text/css">
+
+        /* 去掉底图logo */
+        .anchorBL{display:none}
+    </style>
+
+</head>
+<body>
+
+    <div id="map" style="width: 1300px;height:600px;"></div>
+    <script type="text/javascript">
+    console.log("我就想展示一下地图啊啊啊啊啊啊!")
+    var mychart=echarts.init(document.getElementById('map'))
+
+  var allData = {
+    "citys": [{
+    "name":"遵义",
+    "value":[106.932851,27.72991],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"淄博",
+    "value":[118.06088,36.819778],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"资阳",
+    "value":[104.636162,30.136705],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"驻马店",
+    "value":[114.027892,33.020022],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"株洲",
+    "value":[113.138749,27.833312],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"珠海",
+    "value":[113.581838,22.276698],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"周口",
+    "value":[114.701181,33.63207],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"重庆",
+    "value":[106.586184,29.566172],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"中卫",
+    "value":[105.204718,37.504097],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"郑州",
+    "value":[113.665365,34.752235],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"镇江",
+    "value":[119.433365,32.198384],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"昭通",
+    "value":[103.721785,27.343826],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"长治",
+    "value":[113.122562,36.202898],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"长沙",
+    "value":[113.019875,28.200096],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"长春",
+    "value":[125.335126,43.887924],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"漳州",
+    "value":[117.655879,24.520771],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"张掖",
+    "value":[100.457559,38.932739],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"湛江",
+    "value":[110.364404,21.274838],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"运城",
+    "value":[111.012235,35.032469],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"岳阳",
+    "value":[113.138363,29.363933],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"玉溪",
+    "value":[102.550107,24.3585],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"玉树州",
+    "value":[97.009918,33.011364],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"玉林",
+    "value":[110.189028,22.655295],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"榆林",
+    "value":[109.739893,38.292015],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"营口",
+    "value":[122.240425,40.673357],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"银川",
+    "value":[106.207537,38.501852],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"益阳",
+    "value":[112.359792,28.558951],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"宜春",
+    "value":[114.42471,27.8206],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"宜宾",
+    "value":[104.646528,28.757754],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"伊犁",
+    "value":[81.326673,43.928009],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"扬州",
+    "value":[119.419998,32.402383],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"延边",
+    "value":[129.479382,42.920667],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"延安",
+    "value":[109.498879,36.591807],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"烟台",
+    "value":[121.451542,37.469811],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"许昌",
+    "value":[113.856172,34.042151],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"徐州",
+    "value":[117.288849,34.212905],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"宿州",
+    "value":[116.974567,33.651375],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"邢台",
+    "value":[114.512034,37.076455],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"新余",
+    "value":[114.917215,27.825368],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"新乡",
+    "value":[113.931872,35.308462],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"忻州",
+    "value":[112.737171,38.422608],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"孝感",
+    "value":[113.921937,30.930938],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"襄阳",
+    "value":[112.131982,32.014062],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"湘潭",
+    "value":[112.951039,27.834936],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"香港",
+    "value":[114.170844,22.282427],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"咸阳",
+    "value":[108.713696,34.336191],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"咸宁",
+    "value":[102.646856,37.931873],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"西宁",
+    "value":[101.762493,36.636514],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"西安",
+    "value":[108.953493,34.273184],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"武威",
+    "value":[102.646856,37.931873],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"武汉",
+    "value":[114.301131,30.651394],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"吴忠",
+    "value":[106.210541,38.005305],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"芜湖",
+    "value":[118.43886,31.360757],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"无锡",
+    "value":[120.315707,31.500041],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"乌鲁木齐",
+    "value":[87.544978,43.878506],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"乌兰察布",
+    "value":[113.138318,41.00173],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"文昌",
+    "value":[110.819771,19.563463],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"温州",
+    "value":[120.669397,28.008485],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"渭南",
+    "value":[109.515443,34.505953],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"潍坊",
+    "value":[119.164924,36.712881],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"万宁",
+    "value":[110.39186,18.81323],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"吐鲁番",
+    "value":[89.194424,42.960151],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"铜仁",
+    "value":[109.197012,27.73753],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"通辽",
+    "value":[122.247073,43.658189],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"通化",
+    "value":[125.941436,41.733601],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"铁岭",
+    "value":[123.731792,42.231445],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"天水",
+    "value":[118.188763,39.637696],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"天津",
+    "value":[117.217271,39.142006],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"唐山",
+    "value":[118.188763,39.637696],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"泰安",
+    "value":[82.986083,46.75312],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"太原",
+    "value":[112.558139,37.876773],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"塔城",
+    "value":[82.986083,46.75312],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"遂宁",
+    "value":[105.598274,30.540341],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"绥化",
+    "value":[126.974208,46.662209],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"苏州",
+    "value":[120.592412,31.303812],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"松原",
+    "value":[124.829755,45.148828],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"四平",
+    "value":[124.353608,43.171785],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"石嘴山",
+    "value":[106.390022,38.988113],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"石家庄",
+    "value":[114.521532,38.048312],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"沈阳",
+    "value":[123.442681,41.785837],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"深圳",
+    "value":[114.060528,22.551927],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"绍兴",
+    "value":[120.580878,30.037121],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"邵阳",
+    "value":[111.472707,27.2445],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"上饶",
+    "value":[117.949463,28.458848],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"上海",
+    "value":[121.475605,31.223183],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"商丘",
+    "value":[115.663599,34.419964],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"商洛",
+    "value":[109.922115,33.876475],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"山南",
+    "value":[91.779829,29.244288],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"厦门",
+    "value":[118.09931,24.486723],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"三亚",
+    "value":[109.514536,18.256813],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"日喀则",
+    "value":[88.895999,29.274398],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"泉州",
+    "value":[118.683019,24.877067],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"曲靖",
+    "value":[103.802436,25.49719],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"衢州",
+    "value":[118.866022,28.974788],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"琼海",
+    "value":[110.475948,19.265074],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"清远",
+    "value":[113.066489,23.689553],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"青岛",
+    "value":[120.389458,36.073394],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"秦皇岛",
+    "value":[119.605659,39.944181],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"钦州",
+    "value":[108.65943,21.987799],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"黔南",
+    "value":[107.526938,26.264992],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"黔东南",
+    "value":[107.987727,26.592184],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"齐齐哈尔",
+    "value":[123.925144,47.360174],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"莆田",
+    "value":[119.016246,25.46117],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"萍乡",
+    "value":[113.864374,27.631209],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"平凉",
+    "value":[106.668569,35.549467],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"宁德",
+    "value":[119.55221,26.67405],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"宁波",
+    "value":[121.626272,29.864781],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"内江",
+    "value":[105.061716,29.58664],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"南阳",
+    "value":[112.536159,32.997791],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"南通",
+    "value":[120.902166,31.985814],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"南平",
+    "value":[118.181495,26.64803],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"南宁",
+    "value":[108.501840,22.792313],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"南京",
+    "value":[118.759829,32.068353],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"南充",
+    "value":[106.116929,30.843535],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"南昌",
+    "value":[115.925653,28.667885],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"那曲",
+    "value":[92.057944,31.483791],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"牡丹江",
+    "value":[129.63552,44.556864],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"绵阳",
+    "value":[104.68441,31.474895],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"眉山",
+    "value":[103.855357,30.082244],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"茂名",
+    "value":[110.935565,21.669333],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"马鞍山",
+    "value":[118.513581,31.677003],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"吕梁",
+    "value":[111.147574,37.524728],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"洛阳",
+    "value":[112.461149,34.626403],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"娄底",
+    "value":[111.999778,27.704487],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"六盘水",
+    "value":[104.838128,26.598576],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"六安",
+    "value":[116.524112,31.743172],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"柳州",
+    "value":[109.43385,24.334332],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"临沂",
+    "value":[118.361237,35.110436],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"临夏",
+    "value":[103.217252,35.607679],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"临高县",
+    "value":[109.691691,19.919747],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"临汾",
+    "value":[111.522077,36.09351],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"林芝",
+    "value":[94.368109,29.65429],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"聊城",
+    "value":[115.993888,36.464384],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"辽阳",
+    "value":[123.246241,41.275246],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"丽江",
+    "value":[100.233037,26.860915],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"乐山",
+    "value":[103.77139,29.559197],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"廊坊",
+    "value":[116.714723,39.516431],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"兰州",
+    "value":[103.825792,36.050377],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"来宾",
+    "value":[109.227455,23.756811],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"拉萨",
+    "value":[91.125180,29.660633],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"昆明",
+    "value":[102.713812,25.049759],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"开封",
+    "value":[114.31172,34.802174],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"喀什",
+    "value":[75.99582,39.478103],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"酒泉",
+    "value":[98.502981,39.73869],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"九江",
+    "value":[116.006383,29.711089],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"荆州",
+    "value":[112.243219,30.342588],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"晋中",
+    "value":[112.756143,37.693069],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"锦州",
+    "value":[121.142947,41.124631],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"金华",
+    "value":[119.654591,29.085398],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"焦作",
+    "value":[113.248549,35.222143],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"嘉兴",
+    "value":[120.762399,30.751222],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"佳木斯",
+    "value":[130.328508,46.806678],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"济宁",
+    "value":[116.595339,35.419],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"济南",
+    "value":[117.034643,36.687324],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"吉林",
+    "value":[126.562245,43.834203],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"吉安",
+    "value":[114.998214,27.119984],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"惠州",
+    "value":[114.42126,23.115561],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"黄石",
+    "value":[114.947218,30.161002],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"黄冈",
+    "value":[114.876764,30.45911],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"淮南",
+    "value":[117.005811,32.631604],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"淮安",
+    "value":[119.024358,33.616055],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"湖州",
+    "value":[120.095093,30.898716],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"葫芦岛",
+    "value":[120.842249,40.718019],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"呼伦贝尔",
+    "value":[119.769492,49.219388],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"呼和浩特",
+    "value":[111.709591,40.811634],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"红河",
+    "value":[103.381,23.374956],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"衡阳",
+    "value":[112.576149,26.900864],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"衡水",
+    "value":[115.674252,37.745876],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"菏泽",
+    "value":[115.486974,35.2387],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"河池",
+    "value":[108.090928,24.698124],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"和田",
+    "value":[79.927936,37.120217],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"合肥",
+    "value":[117.323834,31.891263],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"杭州",
+    "value":[120.189055,30.248535],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"邯郸",
+    "value":[114.481239,36.608322],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"海西州",
+    "value":[97.377823,37.394308],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"海口",
+    "value":[110.323850,20.015648],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"海东",
+    "value":[102.108716,36.509208],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"哈密",
+    "value":[93.520062,42.826884],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"哈尔滨",
+    "value":[126.668317,45.748027],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"桂林",
+    "value":[110.201245,25.243671],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"贵阳",
+    "value":[106.700675,26.605123],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"贵港",
+    "value":[109.606091,23.117182],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"广州",
+    "value":[113.269007,23.137622],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"广安",
+    "value":[106.638404,30.461996],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"固原",
+    "value":[106.247425,36.023254],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"赣州",
+    "value":[114.941658,25.836477],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"阜阳",
+    "value":[115.821009,32.89582],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"抚州",
+    "value":[116.362812,27.955659],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"抚顺",
+    "value":[123.964948,41.888331],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"福州",
+    "value":[119.303063,26.082110],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"佛山",
+    "value":[113.125634,23.028557],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"鄂州",
+    "value":[114.899311,30.396322],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"鄂尔多斯",
+    "value":[109.786866,39.61515],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"东莞",
+    "value":[113.757843,23.029171],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"定西",
+    "value":[104.631266,35.587538],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"定安县",
+    "value":[110.363811,19.687392],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"德州",
+    "value":[116.364978,37.441996],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"德阳",
+    "value":[104.404417,31.133858],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"儋州",
+    "value":[109.58746,19.526872],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"大同",
+    "value":[113.304146,40.081877],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"大庆",
+    "value":[125.108086,46.594625],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"大连",
+    "value":[121.621628,38.920525],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"大理",
+    "value":[100.276766,25.61142],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"达州",
+    "value":[107.474017,31.217025],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"楚雄",
+    "value":[101.536137,25.053606],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"滁州",
+    "value":[118.341133,32.262492],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"崇左",
+    "value":[107.370945,22.38285],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"赤峰",
+    "value":[118.893797,42.261474],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"澄迈县",
+    "value":[110.014083,19.746255],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"成都",
+    "value":[104.072363,30.663316],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"朝阳",
+    "value":[120.455196,41.580469],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"常德",
+    "value":[111.704874,29.038508],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"昌吉",
+    "value":[87.314999,44.016646],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"沧州",
+    "value":[116.84673,38.309989],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"毕节",
+    "value":[105.298015,27.289957],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"北京",
+    "value":[116.404158,39.910072],
+    "symbolSize":8,
+    "itemStyle": {
+        "normal": {
+            "color": "#FF6A6A"
+        }
+    }
+},{
+    "name":"保定",
+    "value":[115.485833,38.870326],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"宝鸡",
+    "value":[107.243422,34.369153],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"包头",
+    "value":[109.84539,40.664024],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"百色",
+    "value":[106.625163,23.90898],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"白银",
+    "value":[104.142147,36.551987],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"白城",
+    "value":[122.844437,45.6249],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"巴州",
+    "value":[86.151584,41.775175],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"巴彦淖尔",
+    "value":[107.396125,40.750451],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"鞍山",
+    "value":[123.001946,41.115704],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"安顺",
+    "value":[105.953841,26.260549],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"阿克苏",
+    "value":[80.266939,41.175681],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"海北",
+    "value":[105.204718,37.504097],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+},{
+    "name":"海南州",
+    "value":[100.626045,36.292801],
+    "symbolSize":2,
+    "itemStyle": {
+        "normal": {
+            "color": "#53868B"
+        }
+    }
+}
+    ],
+    "moveLines": [{
+    "fromname":"上海",
+    "toname":"重庆",
+    "coords":[
+        [121.475605,31.223183],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"北京",
+    "coords":[
+        [121.475605,31.223183],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"苏州",
+    "coords":[
+        [121.475605,31.223183],
+        [120.592412,31.303812]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"深圳",
+    "coords":[
+        [121.475605,31.223183],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"广州",
+    "coords":[
+        [121.475605,31.223183],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"西安",
+    "coords":[
+        [121.475605,31.223183],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"长春",
+    "coords":[
+        [121.475605,31.223183],
+        [125.335126,43.887924]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"南通",
+    "coords":[
+        [121.475605,31.223183],
+        [120.902166,31.985814]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"香港",
+    "coords":[
+        [121.475605,31.223183],
+        [114.170844,22.282427]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"南京",
+    "coords":[
+        [121.475605,31.223183],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"杭州",
+    "coords":[
+        [121.475605,31.223183],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"咸阳",
+    "coords":[
+        [121.475605,31.223183],
+        [108.713696,34.336191]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"遵义",
+    "coords":[
+        [121.475605,31.223183],
+        [106.932851,27.72991]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"嘉兴",
+    "coords":[
+        [121.475605,31.223183],
+        [120.762399,30.751222]
+    ]
+},
+{
+    "fromname":"上海",
+    "toname":"沈阳",
+    "coords":[
+        [121.475605,31.223183],
+        [123.442681,41.785837]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"昌吉",
+    "coords":[
+        [87.544978,43.878506],
+        [87.314999,44.016646]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"喀什",
+    "coords":[
+        [87.544978,43.878506],
+        [75.99582,39.478103]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"和田",
+    "coords":[
+        [87.544978,43.878506],
+        [79.927936,37.120217]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"塔城",
+    "coords":[
+        [87.544978,43.878506],
+        [82.986083,46.75312]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"武威",
+    "coords":[
+        [87.544978,43.878506],
+        [102.646856,37.931873]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"张掖",
+    "coords":[
+        [87.544978,43.878506],
+        [100.457559,38.932739]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"上海",
+    "coords":[
+        [87.544978,43.878506],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"西宁",
+    "coords":[
+        [87.544978,43.878506],
+        [101.762493,36.636514]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"伊犁",
+    "coords":[
+        [87.544978,43.878506],
+        [81.326673,43.928009]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"海东",
+    "coords":[
+        [87.544978,43.878506],
+        [102.108716,36.509208]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"吐鲁番",
+    "coords":[
+        [87.544978,43.878506],
+        [89.194424,42.960151]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"巴州",
+    "coords":[
+        [87.544978,43.878506],
+        [86.151584,41.775175]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"哈密",
+    "coords":[
+        [87.544978,43.878506],
+        [93.520062,42.826884]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"阿克苏",
+    "coords":[
+        [87.544978,43.878506],
+        [80.266939,41.175681]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"北京",
+    "coords":[
+        [87.544978,43.878506],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"酒泉",
+    "coords":[
+        [87.544978,43.878506],
+        [98.502981,39.73869]
+    ]
+},
+{
+    "fromname":"乌鲁木齐",
+    "toname":"广州",
+    "coords":[
+        [87.544978,43.878506],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"北京",
+    "coords":[
+        [103.825792,36.050377],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"哈密",
+    "coords":[
+        [103.825792,36.050377],
+        [93.520062,42.826884]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"南京",
+    "coords":[
+        [103.825792,36.050377],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"吐鲁番",
+    "coords":[
+        [103.825792,36.050377],
+        [89.194424,42.960151]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"定西",
+    "coords":[
+        [103.825792,36.050377],
+        [104.631266,35.587538]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"武威",
+    "coords":[
+        [103.825792,36.050377],
+        [102.646856,37.931873]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"天水",
+    "coords":[
+        [103.825792,36.050377],
+        [118.188763,39.637696]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"白银",
+    "coords":[
+        [103.825792,36.050377],
+        [104.142147,36.551987]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"西安",
+    "coords":[
+        [103.825792,36.050377],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"西宁",
+    "coords":[
+        [103.825792,36.050377],
+        [101.762493,36.636514]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"酒泉",
+    "coords":[
+        [103.825792,36.050377],
+        [98.502981,39.73869]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"张掖",
+    "coords":[
+        [103.825792,36.050377],
+        [100.457559,38.932739]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"南昌",
+    "coords":[
+        [103.825792,36.050377],
+        [115.925653,28.667885]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"临夏",
+    "coords":[
+        [103.825792,36.050377],
+        [103.217252,35.607679]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"昆明",
+    "coords":[
+        [103.825792,36.050377],
+        [102.713812,25.049759]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"济南",
+    "coords":[
+        [103.825792,36.050377],
+        [117.034643,36.687324]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"天津",
+    "coords":[
+        [103.825792,36.050377],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"武汉",
+    "coords":[
+        [103.825792,36.050377],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"青岛",
+    "coords":[
+        [103.825792,36.050377],
+        [120.389458,36.073394]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"合肥",
+    "coords":[
+        [103.825792,36.050377],
+        [117.323834,31.891263]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"长沙",
+    "coords":[
+        [103.825792,36.050377],
+        [113.019875,28.200096]
+    ]
+},
+{
+    "fromname":"兰州",
+    "toname":"平凉",
+    "coords":[
+        [103.825792,36.050377],
+        [106.668569,35.549467]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"上海",
+    "coords":[
+        [116.404158,39.910072],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"重庆",
+    "coords":[
+        [116.404158,39.910072],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"廊坊",
+    "coords":[
+        [116.404158,39.910072],
+        [116.714723,39.516431]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"长沙",
+    "coords":[
+        [116.404158,39.910072],
+        [113.019875,28.200096]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"武汉",
+    "coords":[
+        [116.404158,39.910072],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"杭州",
+    "coords":[
+        [116.404158,39.910072],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"保定",
+    "coords":[
+        [116.404158,39.910072],
+        [115.485833,38.870326]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"天津",
+    "coords":[
+        [116.404158,39.910072],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"南京",
+    "coords":[
+        [116.404158,39.910072],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"哈尔滨",
+    "coords":[
+        [116.404158,39.910072],
+        [126.668317,45.748027]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"西安",
+    "coords":[
+        [116.404158,39.910072],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"邯郸",
+    "coords":[
+        [116.404158,39.910072],
+        [114.481239,36.608322]
+    ]
+},
+{
+    "fromname":"北京",
+    "toname":"温州",
+    "coords":[
+        [116.404158,39.910072],
+        [120.669397,28.008485]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"成都",
+    "coords":[
+        [118.759829,32.068353],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"北京",
+    "coords":[
+        [118.759829,32.068353],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"扬州",
+    "coords":[
+        [118.759829,32.068353],
+        [119.419998,32.402383]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"淮安",
+    "coords":[
+        [118.759829,32.068353],
+        [119.024358,33.616055]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"重庆",
+    "coords":[
+        [118.759829,32.068353],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"镇江",
+    "coords":[
+        [118.759829,32.068353],
+        [119.433365,32.198384]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"上海",
+    "coords":[
+        [118.759829,32.068353],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"徐州",
+    "coords":[
+        [118.759829,32.068353],
+        [117.288849,34.212905]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"兰州",
+    "coords":[
+        [118.759829,32.068353],
+        [103.825792,36.050377]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"长春",
+    "coords":[
+        [118.759829,32.068353],
+        [125.335126,43.887924]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"滁州",
+    "coords":[
+        [118.759829,32.068353],
+        [118.341133,32.262492]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"南宁",
+    "coords":[
+        [118.759829,32.068353],
+        [108.501840,22.792313]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"苏州",
+    "coords":[
+        [118.759829,32.068353],
+        [120.592412,31.303812]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"贵阳",
+    "coords":[
+        [118.759829,32.068353],
+        [106.700675,26.605123]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"广州",
+    "coords":[
+        [118.759829,32.068353],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"深圳",
+    "coords":[
+        [118.759829,32.068353],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"南京",
+    "toname":"马鞍山",
+    "coords":[
+        [118.759829,32.068353],
+        [118.513581,31.677003]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"贵港",
+    "coords":[
+        [108.501840,22.792313],
+        [109.606091,23.117182]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"南京",
+    "coords":[
+        [108.501840,22.792313],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"杭州",
+    "coords":[
+        [108.501840,22.792313],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"崇左",
+    "coords":[
+        [108.501840,22.792313],
+        [107.370945,22.38285]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"百色",
+    "coords":[
+        [108.501840,22.792313],
+        [106.625163,23.90898]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"玉林",
+    "coords":[
+        [108.501840,22.792313],
+        [110.189028,22.655295]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"武汉",
+    "coords":[
+        [108.501840,22.792313],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"桂林",
+    "coords":[
+        [108.501840,22.792313],
+        [110.201245,25.243671]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"河池",
+    "coords":[
+        [108.501840,22.792313],
+        [108.090928,24.698124]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"广州",
+    "coords":[
+        [108.501840,22.792313],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"钦州",
+    "coords":[
+        [108.501840,22.792313],
+        [108.65943,21.987799]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"郑州",
+    "coords":[
+        [108.501840,22.792313],
+        [113.665365,34.752235]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"柳州",
+    "coords":[
+        [108.501840,22.792313],
+        [109.43385,24.334332]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"来宾",
+    "coords":[
+        [108.501840,22.792313],
+        [109.227455,23.756811]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"西安",
+    "coords":[
+        [108.501840,22.792313],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"南宁",
+    "toname":"合肥",
+    "coords":[
+        [108.501840,22.792313],
+        [117.323834,31.891263]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"北京",
+    "coords":[
+        [115.925653,28.667885],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"宜春",
+    "coords":[
+        [115.925653,28.667885],
+        [114.42471,27.8206]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"九江",
+    "coords":[
+        [115.925653,28.667885],
+        [116.006383,29.711089]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"海口",
+    "coords":[
+        [115.925653,28.667885],
+        [110.323850,20.015648]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"昆明",
+    "coords":[
+        [115.925653,28.667885],
+        [102.713812,25.049759]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"上饶",
+    "coords":[
+        [115.925653,28.667885],
+        [117.949463,28.458848]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"抚州",
+    "coords":[
+        [115.925653,28.667885],
+        [116.362812,27.955659]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"赣州",
+    "coords":[
+        [115.925653,28.667885],
+        [114.941658,25.836477]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"吉安",
+    "coords":[
+        [115.925653,28.667885],
+        [114.998214,27.119984]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"萍乡",
+    "coords":[
+        [115.925653,28.667885],
+        [113.864374,27.631209]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"兰州",
+    "coords":[
+        [115.925653,28.667885],
+        [103.825792,36.050377]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"深圳",
+    "coords":[
+        [115.925653,28.667885],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"新余",
+    "coords":[
+        [115.925653,28.667885],
+        [114.917215,27.825368]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"重庆",
+    "coords":[
+        [115.925653,28.667885],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"成都",
+    "coords":[
+        [115.925653,28.667885],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"上海",
+    "coords":[
+        [115.925653,28.667885],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"南昌",
+    "toname":"天津",
+    "coords":[
+        [115.925653,28.667885],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"六安",
+    "coords":[
+        [117.323834,31.891263],
+        [116.524112,31.743172]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"海口",
+    "coords":[
+        [117.323834,31.891263],
+        [110.323850,20.015648]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"上海",
+    "coords":[
+        [117.323834,31.891263],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"阜阳",
+    "coords":[
+        [117.323834,31.891263],
+        [115.821009,32.89582]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"淮南",
+    "coords":[
+        [117.323834,31.891263],
+        [117.005811,32.631604]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"芜湖",
+    "coords":[
+        [117.323834,31.891263],
+        [118.43886,31.360757]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"南宁",
+    "coords":[
+        [117.323834,31.891263],
+        [108.501840,22.792313]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"南京",
+    "coords":[
+        [117.323834,31.891263],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"重庆",
+    "coords":[
+        [117.323834,31.891263],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"宿州",
+    "coords":[
+        [117.323834,31.891263],
+        [116.974567,33.651375]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"深圳",
+    "coords":[
+        [117.323834,31.891263],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"广州",
+    "coords":[
+        [117.323834,31.891263],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"滁州",
+    "coords":[
+        [117.323834,31.891263],
+        [118.341133,32.262492]
+    ]
+},
+{
+    "fromname":"合肥",
+    "toname":"马鞍山",
+    "coords":[
+        [117.323834,31.891263],
+        [118.513581,31.677003]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"乌兰察布",
+    "coords":[
+        [111.709591,40.811634],
+        [113.138318,41.00173]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"包头",
+    "coords":[
+        [111.709591,40.811634],
+        [109.84539,40.664024]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"呼伦贝尔",
+    "coords":[
+        [111.709591,40.811634],
+        [119.769492,49.219388]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"上海",
+    "coords":[
+        [111.709591,40.811634],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"长沙",
+    "coords":[
+        [111.709591,40.811634],
+        [113.019875,28.200096]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"鄂尔多斯",
+    "coords":[
+        [111.709591,40.811634],
+        [109.786866,39.61515]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"杭州",
+    "coords":[
+        [111.709591,40.811634],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"巴彦淖尔",
+    "coords":[
+        [111.709591,40.811634],
+        [107.396125,40.750451]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"重庆",
+    "coords":[
+        [111.709591,40.811634],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"南昌",
+    "coords":[
+        [111.709591,40.811634],
+        [115.925653,28.667885]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"哈尔滨",
+    "coords":[
+        [111.709591,40.811634],
+        [126.668317,45.748027]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"成都",
+    "coords":[
+        [111.709591,40.811634],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"赤峰",
+    "coords":[
+        [111.709591,40.811634],
+        [118.893797,42.261474]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"北京",
+    "coords":[
+        [111.709591,40.811634],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"抚州",
+    "coords":[
+        [111.709591,40.811634],
+        [116.362812,27.955659]
+    ]
+},
+{
+    "fromname":"呼和浩特",
+    "toname":"通辽",
+    "coords":[
+        [111.709591,40.811634],
+        [122.247073,43.658189]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"北京",
+    "coords":[
+        [126.668317,45.748027],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"绥化",
+    "coords":[
+        [126.668317,45.748027],
+        [126.974208,46.662209]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"青岛",
+    "coords":[
+        [126.668317,45.748027],
+        [120.389458,36.073394]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"济南",
+    "coords":[
+        [126.668317,45.748027],
+        [117.034643,36.687324]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"天津",
+    "coords":[
+        [126.668317,45.748027],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"秦皇岛",
+    "coords":[
+        [126.668317,45.748027],
+        [119.605659,39.944181]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"大连",
+    "coords":[
+        [126.668317,45.748027],
+        [121.621628,38.920525]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"太原",
+    "coords":[
+        [126.668317,45.748027],
+        [112.558139,37.876773]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"牡丹江",
+    "coords":[
+        [126.668317,45.748027],
+        [129.63552,44.556864]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"齐齐哈尔",
+    "coords":[
+        [126.668317,45.748027],
+        [123.925144,47.360174]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"大庆",
+    "coords":[
+        [126.668317,45.748027],
+        [125.108086,46.594625]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"沈阳",
+    "coords":[
+        [126.668317,45.748027],
+        [123.442681,41.785837]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"石家庄",
+    "coords":[
+        [126.668317,45.748027],
+        [114.521532,38.048312]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"长春",
+    "coords":[
+        [126.668317,45.748027],
+        [125.335126,43.887924]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"三亚",
+    "coords":[
+        [126.668317,45.748027],
+        [109.514536,18.256813]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"佳木斯",
+    "coords":[
+        [126.668317,45.748027],
+        [130.328508,46.806678]
+    ]
+},
+{
+    "fromname":"哈尔滨",
+    "toname":"呼和浩特",
+    "coords":[
+        [126.668317,45.748027],
+        [111.709591,40.811634]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"北京",
+    "coords":[
+        [117.217271,39.142006],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"重庆",
+    "coords":[
+        [117.217271,39.142006],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"上海",
+    "coords":[
+        [117.217271,39.142006],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"福州",
+    "coords":[
+        [117.217271,39.142006],
+        [119.303063,26.082110]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"廊坊",
+    "coords":[
+        [117.217271,39.142006],
+        [116.714723,39.516431]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"唐山",
+    "coords":[
+        [117.217271,39.142006],
+        [118.188763,39.637696]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"长沙",
+    "coords":[
+        [117.217271,39.142006],
+        [113.019875,28.200096]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"沧州",
+    "coords":[
+        [117.217271,39.142006],
+        [116.84673,38.309989]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"哈尔滨",
+    "coords":[
+        [117.217271,39.142006],
+        [126.668317,45.748027]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"德州",
+    "coords":[
+        [117.217271,39.142006],
+        [116.364978,37.441996]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"邯郸",
+    "coords":[
+        [117.217271,39.142006],
+        [114.481239,36.608322]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"武汉",
+    "coords":[
+        [117.217271,39.142006],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"秦皇岛",
+    "coords":[
+        [117.217271,39.142006],
+        [119.605659,39.944181]
+    ]
+},
+{
+    "fromname":"天津",
+    "toname":"杭州",
+    "coords":[
+        [117.217271,39.142006],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"晋中",
+    "coords":[
+        [112.558139,37.876773],
+        [112.756143,37.693069]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"吕梁",
+    "coords":[
+        [112.558139,37.876773],
+        [111.147574,37.524728]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"忻州",
+    "coords":[
+        [112.558139,37.876773],
+        [112.737171,38.422608]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"上海",
+    "coords":[
+        [112.558139,37.876773],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"成都",
+    "coords":[
+        [112.558139,37.876773],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"大同",
+    "coords":[
+        [112.558139,37.876773],
+        [113.304146,40.081877]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"临汾",
+    "coords":[
+        [112.558139,37.876773],
+        [111.522077,36.09351]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"运城",
+    "coords":[
+        [112.558139,37.876773],
+        [111.012235,35.032469]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"福州",
+    "coords":[
+        [112.558139,37.876773],
+        [119.303063,26.082110]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"北京",
+    "coords":[
+        [112.558139,37.876773],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"长治",
+    "coords":[
+        [112.558139,37.876773],
+        [113.122562,36.202898]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"贵阳",
+    "coords":[
+        [112.558139,37.876773],
+        [106.700675,26.605123]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"哈尔滨",
+    "coords":[
+        [112.558139,37.876773],
+        [126.668317,45.748027]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"重庆",
+    "coords":[
+        [112.558139,37.876773],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"桂林",
+    "coords":[
+        [112.558139,37.876773],
+        [110.201245,25.243671]
+    ]
+},
+{
+    "fromname":"太原",
+    "toname":"杭州",
+    "coords":[
+        [112.558139,37.876773],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"佛山",
+    "coords":[
+        [113.269007,23.137622],
+        [113.125634,23.028557]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"上海",
+    "coords":[
+        [113.269007,23.137622],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"成都",
+    "coords":[
+        [113.269007,23.137622],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"东莞",
+    "coords":[
+        [113.269007,23.137622],
+        [113.757843,23.029171]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"深圳",
+    "coords":[
+        [113.269007,23.137622],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"重庆",
+    "coords":[
+        [113.269007,23.137622],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"清远",
+    "coords":[
+        [113.269007,23.137622],
+        [113.066489,23.689553]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"惠州",
+    "coords":[
+        [113.269007,23.137622],
+        [114.42126,23.115561]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"郑州",
+    "coords":[
+        [113.269007,23.137622],
+        [113.665365,34.752235]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"武汉",
+    "coords":[
+        [113.269007,23.137622],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"西安",
+    "coords":[
+        [113.269007,23.137622],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"南京",
+    "coords":[
+        [113.269007,23.137622],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"昆明",
+    "coords":[
+        [113.269007,23.137622],
+        [102.713812,25.049759]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"杭州",
+    "coords":[
+        [113.269007,23.137622],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"茂名",
+    "coords":[
+        [113.269007,23.137622],
+        [110.935565,21.669333]
+    ]
+},
+{
+    "fromname":"广州",
+    "toname":"湛江",
+    "coords":[
+        [113.269007,23.137622],
+        [110.364404,21.274838]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"深圳",
+    "coords":[
+        [104.072363,30.663316],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"广州",
+    "coords":[
+        [104.072363,30.663316],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"南京",
+    "coords":[
+        [104.072363,30.663316],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"南充",
+    "coords":[
+        [104.072363,30.663316],
+        [106.116929,30.843535]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"重庆",
+    "coords":[
+        [104.072363,30.663316],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"乐山",
+    "coords":[
+        [104.072363,30.663316],
+        [103.77139,29.559197]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"内江",
+    "coords":[
+        [104.072363,30.663316],
+        [105.061716,29.58664]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"三亚",
+    "coords":[
+        [104.072363,30.663316],
+        [109.514536,18.256813]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"德阳",
+    "coords":[
+        [104.072363,30.663316],
+        [104.404417,31.133858]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"合肥",
+    "coords":[
+        [104.072363,30.663316],
+        [117.323834,31.891263]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"资阳",
+    "coords":[
+        [104.072363,30.663316],
+        [104.636162,30.136705]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"东莞",
+    "coords":[
+        [104.072363,30.663316],
+        [113.757843,23.029171]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"眉山",
+    "coords":[
+        [104.072363,30.663316],
+        [103.855357,30.082244]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"拉萨",
+    "coords":[
+        [104.072363,30.663316],
+        [91.125180,29.660633]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"绵阳",
+    "coords":[
+        [104.072363,30.663316],
+        [104.68441,31.474895]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"济南",
+    "coords":[
+        [104.072363,30.663316],
+        [117.034643,36.687324]
+    ]
+},
+{
+    "fromname":"成都",
+    "toname":"武汉",
+    "coords":[
+        [104.072363,30.663316],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"重庆",
+    "coords":[
+        [91.125180,29.660633],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"成都",
+    "coords":[
+        [91.125180,29.660633],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"林芝",
+    "coords":[
+        [91.125180,29.660633],
+        [94.368109,29.65429]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"日喀则",
+    "coords":[
+        [91.125180,29.660633],
+        [88.895999,29.274398]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"绵阳",
+    "coords":[
+        [91.125180,29.660633],
+        [104.68441,31.474895]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"兰州",
+    "coords":[
+        [91.125180,29.660633],
+        [103.825792,36.050377]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"昆明",
+    "coords":[
+        [91.125180,29.660633],
+        [102.713812,25.049759]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"南充",
+    "coords":[
+        [91.125180,29.660633],
+        [106.116929,30.843535]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"山南",
+    "coords":[
+        [91.125180,29.660633],
+        [91.779829,29.244288]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"那曲",
+    "coords":[
+        [91.125180,29.660633],
+        [92.057944,31.483791]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"西宁",
+    "coords":[
+        [91.125180,29.660633],
+        [101.762493,36.636514]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"广安",
+    "coords":[
+        [91.125180,29.660633],
+        [106.638404,30.461996]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"海东",
+    "coords":[
+        [91.125180,29.660633],
+        [102.108716,36.509208]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"玉树州",
+    "coords":[
+        [91.125180,29.660633],
+        [97.009918,33.011364]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"遂宁",
+    "coords":[
+        [91.125180,29.660633],
+        [105.598274,30.540341]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"海西州",
+    "coords":[
+        [91.125180,29.660633],
+        [97.377823,37.394308]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"眉山",
+    "coords":[
+        [91.125180,29.660633],
+        [103.855357,30.082244]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"宜宾",
+    "coords":[
+        [91.125180,29.660633],
+        [104.646528,28.757754]
+    ]
+},
+{
+    "fromname":"拉萨",
+    "toname":"资阳",
+    "coords":[
+        [91.125180,29.660633],
+        [104.636162,30.136705]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"郑州",
+    "coords":[
+        [102.713812,25.049759],
+        [113.665365,34.752235]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"曲靖",
+    "coords":[
+        [102.713812,25.049759],
+        [103.802436,25.49719]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"武汉",
+    "coords":[
+        [102.713812,25.049759],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"佳木斯",
+    "coords":[
+        [102.713812,25.049759],
+        [130.328508,46.806678]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"广州",
+    "coords":[
+        [102.713812,25.049759],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"深圳",
+    "coords":[
+        [102.713812,25.049759],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"昭通",
+    "coords":[
+        [102.713812,25.049759],
+        [103.721785,27.343826]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"玉溪",
+    "coords":[
+        [102.713812,25.049759],
+        [102.550107,24.3585]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"楚雄",
+    "coords":[
+        [102.713812,25.049759],
+        [101.536137,25.053606]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"大理",
+    "coords":[
+        [102.713812,25.049759],
+        [100.276766,25.61142]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"红河",
+    "coords":[
+        [102.713812,25.049759],
+        [103.381,23.374956]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"重庆",
+    "coords":[
+        [102.713812,25.049759],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"南昌",
+    "coords":[
+        [102.713812,25.049759],
+        [115.925653,28.667885]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"西安",
+    "coords":[
+        [102.713812,25.049759],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"昆明",
+    "toname":"长沙",
+    "coords":[
+        [102.713812,25.049759],
+        [113.019875,28.200096]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"北京",
+    "coords":[
+        [120.189055,30.248535],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"重庆",
+    "coords":[
+        [120.189055,30.248535],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"嘉兴",
+    "coords":[
+        [120.189055,30.248535],
+        [120.762399,30.751222]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"绍兴",
+    "coords":[
+        [120.189055,30.248535],
+        [120.580878,30.037121]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"上海",
+    "coords":[
+        [120.189055,30.248535],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"宁波",
+    "coords":[
+        [120.189055,30.248535],
+        [121.626272,29.864781]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"贵阳",
+    "coords":[
+        [120.189055,30.248535],
+        [106.700675,26.605123]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"深圳",
+    "coords":[
+        [120.189055,30.248535],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"南宁",
+    "coords":[
+        [120.189055,30.248535],
+        [108.501840,22.792313]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"广州",
+    "coords":[
+        [120.189055,30.248535],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"金华",
+    "coords":[
+        [120.189055,30.248535],
+        [119.654591,29.085398]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"湖州",
+    "coords":[
+        [120.189055,30.248535],
+        [120.095093,30.898716]
+    ]
+},
+{
+    "fromname":"杭州",
+    "toname":"衢州",
+    "coords":[
+        [120.189055,30.248535],
+        [118.866022,28.974788]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"北京",
+    "coords":[
+        [114.301131,30.651394],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"孝感",
+    "coords":[
+        [114.301131,30.651394],
+        [113.921937,30.930938]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"荆州",
+    "coords":[
+        [114.301131,30.651394],
+        [112.243219,30.342588]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"黄冈",
+    "coords":[
+        [114.301131,30.651394],
+        [114.876764,30.45911]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"襄阳",
+    "coords":[
+        [114.301131,30.651394],
+        [112.131982,32.014062]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"沈阳",
+    "coords":[
+        [114.301131,30.651394],
+        [123.442681,41.785837]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"昆明",
+    "coords":[
+        [114.301131,30.651394],
+        [102.713812,25.049759]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"广州",
+    "coords":[
+        [114.301131,30.651394],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"深圳",
+    "coords":[
+        [114.301131,30.651394],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"咸宁",
+    "coords":[
+        [114.301131,30.651394],
+        [102.646856,37.931873]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"黄石",
+    "coords":[
+        [114.301131,30.651394],
+        [114.947218,30.161002]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"成都",
+    "coords":[
+        [114.301131,30.651394],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"三亚",
+    "coords":[
+        [114.301131,30.651394],
+        [109.514536,18.256813]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"上海",
+    "coords":[
+        [114.301131,30.651394],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"重庆",
+    "coords":[
+        [114.301131,30.651394],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"武汉",
+    "toname":"鄂州",
+    "coords":[
+        [114.301131,30.651394],
+        [114.899311,30.396322]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"武汉",
+    "coords":[
+        [123.442681,41.785837],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"上海",
+    "coords":[
+        [123.442681,41.785837],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"阜阳",
+    "coords":[
+        [123.442681,41.785837],
+        [115.821009,32.89582]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"北京",
+    "coords":[
+        [123.442681,41.785837],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"锦州",
+    "coords":[
+        [123.442681,41.785837],
+        [121.142947,41.124631]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"铁岭",
+    "coords":[
+        [123.442681,41.785837],
+        [123.731792,42.231445]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"大连",
+    "coords":[
+        [123.442681,41.785837],
+        [121.621628,38.920525]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"杭州",
+    "coords":[
+        [123.442681,41.785837],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"营口",
+    "coords":[
+        [123.442681,41.785837],
+        [122.240425,40.673357]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"葫芦岛",
+    "coords":[
+        [123.442681,41.785837],
+        [120.842249,40.718019]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"郑州",
+    "coords":[
+        [123.442681,41.785837],
+        [113.665365,34.752235]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"抚顺",
+    "coords":[
+        [123.442681,41.785837],
+        [123.964948,41.888331]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"哈尔滨",
+    "coords":[
+        [123.442681,41.785837],
+        [126.668317,45.748027]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"南京",
+    "coords":[
+        [123.442681,41.785837],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"长春",
+    "coords":[
+        [123.442681,41.785837],
+        [125.335126,43.887924]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"鞍山",
+    "coords":[
+        [123.442681,41.785837],
+        [123.001946,41.115704]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"合肥",
+    "coords":[
+        [123.442681,41.785837],
+        [117.323834,31.891263]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"朝阳",
+    "coords":[
+        [123.442681,41.785837],
+        [120.455196,41.580469]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"宁波",
+    "coords":[
+        [123.442681,41.785837],
+        [121.626272,29.864781]
+    ]
+},
+{
+    "fromname":"沈阳",
+    "toname":"辽阳",
+    "coords":[
+        [123.442681,41.785837],
+        [123.246241,41.275246]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"临沂",
+    "coords":[
+        [117.034643,36.687324],
+        [118.361237,35.110436]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"成都",
+    "coords":[
+        [117.034643,36.687324],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"德州",
+    "coords":[
+        [117.034643,36.687324],
+        [116.364978,37.441996]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"菏泽",
+    "coords":[
+        [117.034643,36.687324],
+        [115.486974,35.2387]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"聊城",
+    "coords":[
+        [117.034643,36.687324],
+        [115.993888,36.464384]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"泰安",
+    "coords":[
+        [117.034643,36.687324],
+        [82.986083,46.75312]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"青岛",
+    "coords":[
+        [117.034643,36.687324],
+        [120.389458,36.073394]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"贵阳",
+    "coords":[
+        [117.034643,36.687324],
+        [106.700675,26.605123]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"重庆",
+    "coords":[
+        [117.034643,36.687324],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"淄博",
+    "coords":[
+        [117.034643,36.687324],
+        [118.06088,36.819778]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"济宁",
+    "coords":[
+        [117.034643,36.687324],
+        [116.595339,35.419]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"哈尔滨",
+    "coords":[
+        [117.034643,36.687324],
+        [126.668317,45.748027]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"潍坊",
+    "coords":[
+        [117.034643,36.687324],
+        [119.164924,36.712881]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"厦门",
+    "coords":[
+        [117.034643,36.687324],
+        [118.09931,24.486723]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"北京",
+    "coords":[
+        [117.034643,36.687324],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"上海",
+    "coords":[
+        [117.034643,36.687324],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"济南",
+    "toname":"烟台",
+    "coords":[
+        [117.034643,36.687324],
+        [121.451542,37.469811]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"万宁",
+    "coords":[
+        [110.323850,20.015648],
+        [110.39186,18.81323]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"临高县",
+    "coords":[
+        [110.323850,20.015648],
+        [109.691691,19.919747]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"澄迈县",
+    "coords":[
+        [110.323850,20.015648],
+        [110.014083,19.746255]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"武汉",
+    "coords":[
+        [110.323850,20.015648],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"三亚",
+    "coords":[
+        [110.323850,20.015648],
+        [109.514536,18.256813]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"重庆",
+    "coords":[
+        [110.323850,20.015648],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"合肥",
+    "coords":[
+        [110.323850,20.015648],
+        [117.323834,31.891263]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"成都",
+    "coords":[
+        [110.323850,20.015648],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"定安县",
+    "coords":[
+        [110.323850,20.015648],
+        [110.363811,19.687392]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"文昌",
+    "coords":[
+        [110.323850,20.015648],
+        [110.819771,19.563463]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"南阳",
+    "coords":[
+        [110.323850,20.015648],
+        [112.536159,32.997791]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"儋州",
+    "coords":[
+        [110.323850,20.015648],
+        [109.58746,19.526872]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"南昌",
+    "coords":[
+        [110.323850,20.015648],
+        [115.925653,28.667885]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"温州",
+    "coords":[
+        [110.323850,20.015648],
+        [120.669397,28.008485]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"长沙",
+    "coords":[
+        [110.323850,20.015648],
+        [113.019875,28.200096]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"琼海",
+    "coords":[
+        [110.323850,20.015648],
+        [110.475948,19.265074]
+    ]
+},
+{
+    "fromname":"海口",
+    "toname":"福州",
+    "coords":[
+        [110.323850,20.015648],
+        [119.303063,26.082110]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"保定",
+    "coords":[
+        [114.521532,38.048312],
+        [115.485833,38.870326]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"邢台",
+    "coords":[
+        [114.521532,38.048312],
+        [114.512034,37.076455]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"北京",
+    "coords":[
+        [114.521532,38.048312],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"成都",
+    "coords":[
+        [114.521532,38.048312],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"邯郸",
+    "coords":[
+        [114.521532,38.048312],
+        [114.481239,36.608322]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"福州",
+    "coords":[
+        [114.521532,38.048312],
+        [119.303063,26.082110]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"廊坊",
+    "coords":[
+        [114.521532,38.048312],
+        [116.714723,39.516431]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"桂林",
+    "coords":[
+        [114.521532,38.048312],
+        [110.201245,25.243671]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"贵阳",
+    "coords":[
+        [114.521532,38.048312],
+        [106.700675,26.605123]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"衡水",
+    "coords":[
+        [114.521532,38.048312],
+        [115.674252,37.745876]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"唐山",
+    "coords":[
+        [114.521532,38.048312],
+        [118.188763,39.637696]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"上海",
+    "coords":[
+        [114.521532,38.048312],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"重庆",
+    "coords":[
+        [114.521532,38.048312],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"沧州",
+    "coords":[
+        [114.521532,38.048312],
+        [116.84673,38.309989]
+    ]
+},
+{
+    "fromname":"石家庄",
+    "toname":"哈尔滨",
+    "coords":[
+        [114.521532,38.048312],
+        [126.668317,45.748027]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"重庆",
+    "coords":[
+        [119.303063,26.082110],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"天津",
+    "coords":[
+        [119.303063,26.082110],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"三明",
+    "coords":[
+        [119.303063,26.082110],
+        [117.644371,26.270773]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"漳州",
+    "coords":[
+        [119.303063,26.082110],
+        [117.655879,24.520771]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"泉州",
+    "coords":[
+        [119.303063,26.082110],
+        [118.683019,24.877067]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"宁德",
+    "coords":[
+        [119.303063,26.082110],
+        [119.55221,26.67405]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"厦门",
+    "coords":[
+        [119.303063,26.082110],
+        [118.09931,24.486723]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"贵阳",
+    "coords":[
+        [119.303063,26.082110],
+        [106.700675,26.605123]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"西安",
+    "coords":[
+        [119.303063,26.082110],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"咸阳",
+    "coords":[
+        [119.303063,26.082110],
+        [108.713696,34.336191]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"大连",
+    "coords":[
+        [119.303063,26.082110],
+        [121.621628,38.920525]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"南平",
+    "coords":[
+        [119.303063,26.082110],
+        [118.181495,26.64803]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"莆田",
+    "coords":[
+        [119.303063,26.082110],
+        [119.016246,25.46117]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"太原",
+    "coords":[
+        [119.303063,26.082110],
+        [112.558139,37.876773]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"深圳",
+    "coords":[
+        [119.303063,26.082110],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"上海",
+    "coords":[
+        [119.303063,26.082110],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"福州",
+    "toname":"石家庄",
+    "coords":[
+        [119.303063,26.082110],
+        [114.521532,38.048312]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"海东",
+    "coords":[
+        [101.762493,36.636514],
+        [102.108716,36.509208]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"北京",
+    "coords":[
+        [101.762493,36.636514],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"乌鲁木齐",
+    "coords":[
+        [101.762493,36.636514],
+        [87.544978,43.878506]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"海西州",
+    "coords":[
+        [101.762493,36.636514],
+        [97.377823,37.394308]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"拉萨",
+    "coords":[
+        [101.762493,36.636514],
+        [91.125180,29.660633]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"西安",
+    "coords":[
+        [101.762493,36.636514],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"兰州",
+    "coords":[
+        [101.762493,36.636514],
+        [103.825792,36.050377]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"昆明",
+    "coords":[
+        [101.762493,36.636514],
+        [102.713812,25.049759]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"天津",
+    "coords":[
+        [101.762493,36.636514],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"济南",
+    "coords":[
+        [101.762493,36.636514],
+        [117.034643,36.687324]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"长沙",
+    "coords":[
+        [101.762493,36.636514],
+        [113.019875,28.200096]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"武汉",
+    "coords":[
+        [101.762493,36.636514],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"郑州",
+    "coords":[
+        [101.762493,36.636514],
+        [113.665365,34.752235]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"天水",
+    "coords":[
+        [101.762493,36.636514],
+        [118.188763,39.637696]
+    ]
+},
+{
+    "fromname":"西宁",
+    "toname":"咸阳",
+    "coords":[
+        [101.762493,36.636514],
+        [108.713696,34.336191]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"咸阳",
+    "coords":[
+        [108.953493,34.273184],
+        [108.713696,34.336191]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"上海",
+    "coords":[
+        [108.953493,34.273184],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"渭南",
+    "coords":[
+        [108.953493,34.273184],
+        [109.515443,34.505953]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"深圳",
+    "coords":[
+        [108.953493,34.273184],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"北京",
+    "coords":[
+        [108.953493,34.273184],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"广州",
+    "coords":[
+        [108.953493,34.273184],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"苏州",
+    "coords":[
+        [108.953493,34.273184],
+        [120.592412,31.303812]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"成都",
+    "coords":[
+        [108.953493,34.273184],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"宝鸡",
+    "coords":[
+        [108.953493,34.273184],
+        [107.243422,34.369153]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"福州",
+    "coords":[
+        [108.953493,34.273184],
+        [119.303063,26.082110]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"厦门",
+    "coords":[
+        [108.953493,34.273184],
+        [118.09931,24.486723]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"商洛",
+    "coords":[
+        [108.953493,34.273184],
+        [109.922115,33.876475]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"延安",
+    "coords":[
+        [108.953493,34.273184],
+        [109.498879,36.591807]
+    ]
+},
+{
+    "fromname":"西安",
+    "toname":"杭州",
+    "coords":[
+        [108.953493,34.273184],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"金华",
+    "coords":[
+        [106.700675,26.605123],
+        [119.654591,29.085398]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"毕节",
+    "coords":[
+        [106.700675,26.605123],
+        [105.298015,27.289957]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"黔南",
+    "coords":[
+        [106.700675,26.605123],
+        [107.526938,26.264992]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"杭州",
+    "coords":[
+        [106.700675,26.605123],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"温州",
+    "coords":[
+        [106.700675,26.605123],
+        [120.669397,28.008485]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"遵义",
+    "coords":[
+        [106.700675,26.605123],
+        [106.932851,27.72991]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"安顺",
+    "coords":[
+        [106.700675,26.605123],
+        [105.953841,26.260549]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"宁波",
+    "coords":[
+        [106.700675,26.605123],
+        [121.626272,29.864781]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"南京",
+    "coords":[
+        [106.700675,26.605123],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"绍兴",
+    "coords":[
+        [106.700675,26.605123],
+        [120.580878,30.037121]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"六盘水",
+    "coords":[
+        [106.700675,26.605123],
+        [104.838128,26.598576]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"铜仁",
+    "coords":[
+        [106.700675,26.605123],
+        [109.197012,27.73753]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"黔东南",
+    "coords":[
+        [106.700675,26.605123],
+        [107.987727,26.592184]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"福州",
+    "coords":[
+        [106.700675,26.605123],
+        [119.303063,26.082110]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"苏州",
+    "coords":[
+        [106.700675,26.605123],
+        [120.592412,31.303812]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"济南",
+    "coords":[
+        [106.700675,26.605123],
+        [117.034643,36.687324]
+    ]
+},
+{
+    "fromname":"贵阳",
+    "toname":"重庆",
+    "coords":[
+        [106.700675,26.605123],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"昆明",
+    "coords":[
+        [113.665365,34.752235],
+        [102.713812,25.049759]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"开封",
+    "coords":[
+        [113.665365,34.752235],
+        [114.31172,34.802174]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"深圳",
+    "coords":[
+        [113.665365,34.752235],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"南阳",
+    "coords":[
+        [113.665365,34.752235],
+        [112.536159,32.997791]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"广州",
+    "coords":[
+        [113.665365,34.752235],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"新乡",
+    "coords":[
+        [113.665365,34.752235],
+        [113.931872,35.308462]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"周口",
+    "coords":[
+        [113.665365,34.752235],
+        [114.701181,33.63207]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"洛阳",
+    "coords":[
+        [113.665365,34.752235],
+        [112.461149,34.626403]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"珠海",
+    "coords":[
+        [113.665365,34.752235],
+        [113.581838,22.276698]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"焦作",
+    "coords":[
+        [113.665365,34.752235],
+        [113.248549,35.222143]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"成都",
+    "coords":[
+        [113.665365,34.752235],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"北京",
+    "coords":[
+        [113.665365,34.752235],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"商丘",
+    "coords":[
+        [113.665365,34.752235],
+        [115.663599,34.419964]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"许昌",
+    "coords":[
+        [113.665365,34.752235],
+        [113.856172,34.042151]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"驻马店",
+    "coords":[
+        [113.665365,34.752235],
+        [114.027892,33.020022]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"南宁",
+    "coords":[
+        [113.665365,34.752235],
+        [108.501840,22.792313]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"泉州",
+    "coords":[
+        [113.665365,34.752235],
+        [118.683019,24.877067]
+    ]
+},
+{
+    "fromname":"郑州",
+    "toname":"上海",
+    "coords":[
+        [113.665365,34.752235],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"北京",
+    "coords":[
+        [106.586184,29.566172],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"上海",
+    "coords":[
+        [106.586184,29.566172],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"广安",
+    "coords":[
+        [106.586184,29.566172],
+        [106.638404,30.461996]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"成都",
+    "coords":[
+        [106.586184,29.566172],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"杭州",
+    "coords":[
+        [106.586184,29.566172],
+        [120.189055,30.248535]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"天津",
+    "coords":[
+        [106.586184,29.566172],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"深圳",
+    "coords":[
+        [106.586184,29.566172],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"青岛",
+    "coords":[
+        [106.586184,29.566172],
+        [120.389458,36.073394]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"广州",
+    "coords":[
+        [106.586184,29.566172],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"宁波",
+    "coords":[
+        [106.586184,29.566172],
+        [121.626272,29.864781]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"达州",
+    "coords":[
+        [106.586184,29.566172],
+        [107.474017,31.217025]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"拉萨",
+    "coords":[
+        [106.586184,29.566172],
+        [91.125180,29.660633]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"三亚",
+    "coords":[
+        [106.586184,29.566172],
+        [109.514536,18.256813]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"南京",
+    "coords":[
+        [106.586184,29.566172],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"苏州",
+    "coords":[
+        [106.586184,29.566172],
+        [120.592412,31.303812]
+    ]
+},
+{
+    "fromname":"重庆",
+    "toname":"厦门",
+    "coords":[
+        [106.586184,29.566172],
+        [118.09931,24.486723]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"吴忠",
+    "coords":[
+        [106.207537,38.501852],
+        [106.210541,38.005305]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"石嘴山",
+    "coords":[
+        [106.207537,38.501852],
+        [106.390022,38.988113]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"中卫",
+    "coords":[
+        [106.207537,38.501852],
+        [105.204718,37.504097]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"固原",
+    "coords":[
+        [106.207537,38.501852],
+        [106.247425,36.023254]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"丽江",
+    "coords":[
+        [106.207537,38.501852],
+        [100.233037,26.860915]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"北京",
+    "coords":[
+        [106.207537,38.501852],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"贵阳",
+    "coords":[
+        [106.207537,38.501852],
+        [106.700675,26.605123]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"南京",
+    "coords":[
+        [106.207537,38.501852],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"合肥",
+    "coords":[
+        [106.207537,38.501852],
+        [117.323834,31.891263]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"长沙",
+    "coords":[
+        [106.207537,38.501852],
+        [113.019875,28.200096]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"大连",
+    "coords":[
+        [106.207537,38.501852],
+        [121.621628,38.920525]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"青岛",
+    "coords":[
+        [106.207537,38.501852],
+        [120.389458,36.073394]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"榆林",
+    "coords":[
+        [106.207537,38.501852],
+        [109.739893,38.292015]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"重庆",
+    "coords":[
+        [106.207537,38.501852],
+        [106.586184,29.566172]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"南昌",
+    "coords":[
+        [106.207537,38.501852],
+        [115.925653,28.667885]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"郑州",
+    "coords":[
+        [106.207537,38.501852],
+        [113.665365,34.752235]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"成都",
+    "coords":[
+        [106.207537,38.501852],
+        [104.072363,30.663316]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"武汉",
+    "coords":[
+        [106.207537,38.501852],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"西安",
+    "coords":[
+        [106.207537,38.501852],
+        [108.953493,34.273184]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"通辽",
+    "coords":[
+        [106.207537,38.501852],
+        [122.247073,43.658189]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"平凉",
+    "coords":[
+        [106.207537,38.501852],
+        [106.668569,35.549467]
+    ]
+},
+{
+    "fromname":"银川",
+    "toname":"南通",
+    "coords":[
+        [106.207537,38.501852],
+        [120.902166,31.985814]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"上海",
+    "coords":[
+        [125.335126,43.887924],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"南京",
+    "coords":[
+        [125.335126,43.887924],
+        [118.759829,32.068353]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"四平",
+    "coords":[
+        [125.335126,43.887924],
+        [124.353608,43.171785]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"北京",
+    "coords":[
+        [125.335126,43.887924],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"吉林",
+    "coords":[
+        [125.335126,43.887924],
+        [126.562245,43.834203]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"通化",
+    "coords":[
+        [125.335126,43.887924],
+        [125.941436,41.733601]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"松原",
+    "coords":[
+        [125.335126,43.887924],
+        [124.829755,45.148828]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"太原",
+    "coords":[
+        [125.335126,43.887924],
+        [112.558139,37.876773]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"石家庄",
+    "coords":[
+        [125.335126,43.887924],
+        [114.521532,38.048312]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"郑州",
+    "coords":[
+        [125.335126,43.887924],
+        [113.665365,34.752235]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"天津",
+    "coords":[
+        [125.335126,43.887924],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"延边",
+    "coords":[
+        [125.335126,43.887924],
+        [129.479382,42.920667]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"哈尔滨",
+    "coords":[
+        [125.335126,43.887924],
+        [126.668317,45.748027]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"沈阳",
+    "coords":[
+        [125.335126,43.887924],
+        [123.442681,41.785837]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"济南",
+    "coords":[
+        [125.335126,43.887924],
+        [117.034643,36.687324]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"苏州",
+    "coords":[
+        [125.335126,43.887924],
+        [120.592412,31.303812]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"白城",
+    "coords":[
+        [125.335126,43.887924],
+        [122.844437,45.6249]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"扬州",
+    "coords":[
+        [125.335126,43.887924],
+        [119.419998,32.402383]
+    ]
+},
+{
+    "fromname":"长春",
+    "toname":"无锡",
+    "coords":[
+        [125.335126,43.887924],
+        [120.315707,31.500041]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"北京",
+    "coords":[
+        [113.019875,28.200096],
+        [116.404158,39.910072]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"岳阳",
+    "coords":[
+        [113.019875,28.200096],
+        [113.138363,29.363933]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"娄底",
+    "coords":[
+        [113.019875,28.200096],
+        [111.999778,27.704487]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"邵阳",
+    "coords":[
+        [113.019875,28.200096],
+        [111.472707,27.2445]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"湘潭",
+    "coords":[
+        [113.019875,28.200096],
+        [112.951039,27.834936]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"武汉",
+    "coords":[
+        [113.019875,28.200096],
+        [114.301131,30.651394]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"株洲",
+    "coords":[
+        [113.019875,28.200096],
+        [113.138749,27.833312]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"益阳",
+    "coords":[
+        [113.019875,28.200096],
+        [112.359792,28.558951]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"衡阳",
+    "coords":[
+        [113.019875,28.200096],
+        [112.576149,26.900864]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"深圳",
+    "coords":[
+        [113.019875,28.200096],
+        [114.060528,22.551927]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"上海",
+    "coords":[
+        [113.019875,28.200096],
+        [121.475605,31.223183]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"常德",
+    "coords":[
+        [113.019875,28.200096],
+        [111.704874,29.038508]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"天津",
+    "coords":[
+        [113.019875,28.200096],
+        [117.217271,39.142006]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"广州",
+    "coords":[
+        [113.019875,28.200096],
+        [113.269007,23.137622]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"呼和浩特",
+    "coords":[
+        [113.019875,28.200096],
+        [111.709591,40.811634]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"昆明",
+    "coords":[
+        [113.019875,28.200096],
+        [102.713812,25.049759]
+    ]
+},
+{
+    "fromname":"长沙",
+    "toname":"大连",
+    "coords":[
+        [113.019875,28.200096],
+        [121.621628,38.920525]
+    ]
+}]
+};
+
+option = {
+    backgroundColor: '#404a59',
+    title: {
+        text: '主要城市人口迁徙图',
+        left: 'center',
+        textStyle: {
+            color: '#fff'
+        }
+    },
+    legend: {
+        show: false,
+        orient: 'vertical',
+        top: 'bottom',
+        left: 'right',
+        data: ['地点', '线路'],
+        textStyle: {
+            color: '#fff'
+        }
+    },
+    geo: {
+        map: 'china',
+        label: {
+            emphasis: {
+                show: false
+            }
+        },
+        roam: true,
+        itemStyle: {
+            normal: {
+                areaColor: '#323c48',
+                borderColor: '#404a59'
+            },
+            emphasis: {
+                areaColor: '#2a333d'
+            }
+        }
+    },
+    series: [{
+        name: '地点',
+        type: 'effectScatter',
+        coordinateSystem: 'geo',
+        zlevel: 2,
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        label: {
+            emphasis: {
+                show: true,
+                position: 'right',
+                formatter: '{b}'
+            }
+        },
+        symbolSize: 2,
+        showEffectOn: 'render',
+        itemStyle: {
+            normal: {
+                color: '#46bee9'
+            }
+        },
+        data: allData.citys
+    }, {
+        name: '线路',
+        type: 'lines',
+        coordinateSystem: 'geo',
+        zlevel: 2,
+        large: true,
+        effect: {
+            show: true,
+            constantSpeed: 30,
+            symbol: 'pin',
+            symbolSize: 3,
+            trailLength: 0,
+        },
+        lineStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: '#58B3CC'
+                }, {
+                    offset: 1,
+                    color: '#F58158'
+                }], false),
+                width: 1,
+                opacity: 0.2,
+                curveness: 0.1
+            }
+        },
+        data: allData.moveLines
+    }]
+};
+            mychart.setOption(option);
+    </script>
+</body>
+</html>
+
+
+
+
+
+

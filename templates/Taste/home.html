@@ -1,0 +1,503 @@
+
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <script src="https://cdn.bootcss.com/echarts/3.7.0/echarts.simple.js"></script>
+        <script src="../../static/js/echarts-wordcloud.js"></script>
+<title>首页</title>
+    <link rel="stylesheet" href="../../static/css/style.css">
+
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/common.js"></script>
+    <!--背景图片自动更换-->
+    <script src="../../static/js/supersized.3.2.7.min.js"></script>
+    <script src="../../static/js/supersized-init.js"></script>
+    <!--表单验证-->
+    <script src="../../static/js/jquery.validate.min.js?var1.14.0"></script>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+
+<a href="http://localhost:8000/Taste/ShowShop">Begin</a>
+
+<style>
+            html, body, #main {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+        </style>
+        <div id="main"></div>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+			var option = {
+                tooltip: {},
+                series: [ {
+                    type: 'wordCloud',
+                    gridSize: 5,
+                    sizeRange: [10, 100],
+                    rotationRange: [-90, 90],
+                    shape: 'circol',
+                    width: 1000,
+                    height: 800,
+                    drawOutOfBound: true,
+                    textStyle: {
+                        normal: {
+                            color: function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 255),
+                                    Math.round(Math.random() * 255),
+                                    Math.round(Math.random() * 255)
+                                ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+							color:'red',
+                            shadowBlur: 10,
+                            shadowColor: '#333'
+                        }
+                    },
+                   data: [
+                        {
+                            name: '火锅',
+                            value: 10000,
+                            textStyle: {
+                                normal: {
+                                    color: 'red'
+                                },
+                                emphasis: {
+                                    color: 'red'
+                                }
+                            }
+                        },
+                        {
+                            name: '麻辣小龙虾',
+                            value: 6181
+                        },
+                        {
+                            name: '椒鸣凤仪椒麻鸡',
+                            value: 4386
+                        },
+                        {
+                            name: '意大利肉酱面',
+                            value: 4055
+                        },
+                        {
+                            name: '原味牛肉手工米粉',
+                            value: 2467
+                        },
+                        {
+                            name: '黄焖鸡米饭',
+                            value: 2244
+                        },
+                        {
+                            name: '风味水煮鱼',
+                            value: 1898
+                        },
+                        {
+                            name: '南瓜慕斯蛋糕',
+                            value: 1484
+                        },
+                        {
+                            name: '撒尿牛丸',
+                            value: 1112
+                        },
+                        {
+                            name: '阿拉斯加雪蟹腿卷',
+                            value: 965
+                        },
+                        {
+                            name: '大地之力牛肉卷',
+                            value: 847
+                        },
+                        {
+                            name: '呼伦贝尔羊肉串',
+                            value: Math.random() * 2000
+                        },
+                        {
+                            name: '大盘鸡',
+                            value: Math.random() * 2000
+                        },
+                        {
+                            name: '包浆豆腐',
+                            value: Math.random() * 2000
+                        },
+                        {
+                            name: '牛油果丸子汤',
+                            value: Math.random() * 2000
+                        },
+                        {
+                            name: '香辣小龙虾合宝饼',
+                            value: Math.random() * 2000
+                        },
+                        {
+                            name: '精品鲜橙烤鸭',
+                            value: Math.random() * 2000
+                        },
+                        {
+                            name: '脆香牛肉炒馕',
+                            value: Math.random() * 2000
+                        },
+                        {
+                            name: '秘制牛肉炒米粉',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '香糯豌杂面',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '锦衣寿司',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '火炙加吉鱼',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '长沙臭豆腐',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: 'BIANGBIANG面',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '招牌梭边鱼粉',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '犟骨头排骨饭',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '原味紫砂烤梨',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '港式崩砂腩牛杂',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '招牌打卤面',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '辣爆小公鸡',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '蒜蓉小龙虾',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '麻辣藕片',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '阿芮秘制烤鸡爪',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '无核山楂糖葫芦',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '山药豆糖葫芦',
+                            value: Math.random() * 2000
+                        }, 
+					    {
+                            name: '宫廷香酥牛肉饼',
+                            value: Math.random() * 2000
+                        }, 
+					    {
+                            name: '孜然味现烤牛肉干',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '可可巧克力',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '鲜虾米纸卷',
+                            value: Math.random() * 2000
+                        }, 
+					    {
+                            name: '陈立自制香酥脆枣',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '臭豆腐小锅米线',
+                            value: Math.random() * 2000
+                        },
+					    {
+                            name: '螺丝椒香干',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '琵琶腿',
+                            value: Math.random() * 1000
+                        }, 
+					    {
+                            name: '葱麻鸡',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '青瓜虾仁',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '香辣肉丝',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '鳗鱼饭',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '超级热狗',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '钵钵鸡',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '鸡爪子',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '怪味鸡丝',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '德山凤爪',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '福如东海寿桃',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '南城香虾仁大馄饨',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '南城香电烤羊肉串',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '老坛酸菜鱼',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '老北京羊肉串',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '传统京味疙瘩汤',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '京酱肉丝',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '如意芸豆卷',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '素的菜煎饼',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '香糯胶原蹄',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '月姬之恋',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '酸辣粉',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '螺蛳粉',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '五道口枣糕',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '招牌犟骨饭套餐',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '香辣鸡腿堡组合',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '巨无霸经典中薯条套餐',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '招牌虾饺皇',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '姥姥家臊子面',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '炸鸡排咖喱饭',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '香草番茄汤猪软骨面',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '虫草花炒合菜',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '香辣汤雪花肥牛面',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '老北京炸灌肠',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '素的菜煎饼',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '素的菜煎饼',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '糖醋麻辣味锅巴土豆',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '孜然味锅巴土豆',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '牦牛肉功夫面',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '蜂蜜芥末酱加自选',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '串串藕片',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '麻辣鸭板肠',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '老汤美容蹄',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '墨西哥辣碎肠奶酪三明治',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '炭烤川辣蜜汁猪排汉堡',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '豆角丝炒肉拌转百刀',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '酸萝卜牛肉',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '红烧乳鸽',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '乾隆冰芯蛋',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '硬酸汤雪花肥牛面',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '招牌肉夹馍',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '公安牛三鲜',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '大麻鱼巴沙',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '王家骨汤酸辣粉',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '重庆冒菜',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '香糯豌杂面',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '半只鸡过桥米线',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '番茄小鱼儿',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '爆浆芝士饭团',
+                            value: Math.random() * 1000
+                        },
+					    {
+                            name: '牛奶鸡蛋醪糟',
+                            value: Math.random() * 1000
+                        },
+                        {
+                            name: '红豆粥',
+                            value: Math.random() * 1000
+                        }
+                    ]
+                } ]
+            };
+			chart.setOption(option);
+            window.onresize = chart.resize;
+        </script>
+
+</body>
+
+
+</html>
+
+

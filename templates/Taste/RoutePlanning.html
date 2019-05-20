@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+
+<div class="container2">
+
+    <div id="divselect1" style="float:left;height:25px;">类别</div>
+    <select id="select1" style="width:120px;">
+        <option value="1">小吃快餐</option>
+        <option value="2">烧烤</option>
+        <option value="3">自助餐</option>
+        <option value="4">韩国料理</option>
+        <option value="5">下午茶</option>
+        <option value="6">粤菜</option>
+        <option value="7">其他美食</option>
+        <option value="8">云贵菜</option>
+        <option value="9">北京菜</option>
+        <option value="10">江河湖海鲜</option>
+        <option value="11">小龙虾</option>
+        <option value="12">湘菜</option>
+        <option value="13">东北菜</option>
+        <option value="14">本帮浙江菜</option>
+        <option value="15">素食</option>
+        <option value="16">西北菜</option>
+        <option value="17">早茶</option>
+        <option value="18">家常菜</option>
+        <option value="19">粉面馆</option>
+        <option value="20">水果生鲜</option>
+        <option value="21">火锅</option>
+        <option value="22">面包甜点</option>
+        <option value="23">食品保健</option>
+        <option value="24">饮品店</option>
+        <option value="25">川菜</option>
+        <option value="26">西餐</option>
+        <option value="27">咖啡厅</option>
+        <option value="28">日本菜</option>
+        <option value="29">新疆菜</option>
+        <option value="30">私房菜</option>
+        <option value="31">特色菜</option>
+        <option value="32">人气餐厅</option>
+        <option value="33">创意菜</option>
+        <option value="34">徽菜</option>
+        <option value="35">鲁菜</option>
+        <option value="36">东南亚菜</option>
+        <option value="37">湖北菜</option>
+        <option value="38">台湾菜</option>
+        <option value="39">福建菜</option>
+        <option value="40">俄罗斯菜</option>
+
+
+    </select>
+    <!--</div>-->
+    <div id="divselect2" style="float:left;height:25px;">指标</div>
+    <select id="select2" style="width:120px;">
+        <option value="1">热度</option>
+        <option value="2">口味</option>
+        <option value="3">环境</option>
+        <option value="4">服务</option>
+    </select>
+
+    <!--</div>-->
+    <div id="bottom1" style="float:left;height:25px;"></div>
+    <button type='button' onclick="myFunction()">确定</button>
+
+
+    <div class="container2" id="largemap"></div>
+</div>
+<script type="text/javascript">
+    var map = new BMap.Map("largemap");
+    map.enableScrollWheelZoom(true);
+    map.enableKeyboard(true);
+    map.centerAndZoom(new BMap.Point(114.367623,30.53081), 14);
+    var driving = new BMap.DrivingRoute(map, {
+        renderOptions: {
+            map: map,
+            autoViewport: true
+        }
+    });
+    function myFunction(){
+        var start = new BMap.Point(114.364293,30.539529);
+        var end = new BMap.Point(114.419907,30.513343);
+        driving.search(start, end);
+    }
+    $(document).ready(function () {
+        $("#select1").ready(function () {
+
+
+            $("#select1").change(function () {
+                SelectChange();
+                console.log("select变动")
+            })
+        })
+    })
+
+    console.log("000")
+    function SelectChange() {
+
+        var selectVar = $("#select1").val();
+        alert(selectVar)
+        if (selectVar = "1") {
+            alert("1111")
+        }
+        else if (selectVar = "2") {
+            alert("2222")
+        }
+        else {
+            alert("9999")
+        }
+    }
+
+</script>
+
+
+
+{% endblock %}

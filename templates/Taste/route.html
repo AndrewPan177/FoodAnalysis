@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>骑行路线规划</title>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=3.0&ak=qvVzHfNPxlt0m68cYtcoEqGe65HOEGGt"></script>
+<!--<script type="text/javascript" src="../../static/js/mapv.js" charset="utf-8"></script>-->
+<!--<script type="text/javascript" src="../../static/js/mapv.min.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+<style type="text/css">
+body, html,#container {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+</style>
+</head>
+<body>
+<div id="select1" style="float:left;height:25px;">类别</div>
+    <select style="width:120px;">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+<!--</div>-->
+<div id="select2" style="float:left;height:25px;">指标</div>
+    <select style="width:120px;">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+<!--</div>-->
+<div id="bottom1" style="float:left;height:25px;"></div>
+    <button type='button' onclick="myFunction()">确定</button>
+</div>
+<div id="container"></div>
+<script type="text/javascript">
+    var map = new BMap.Map("container");
+    map.enableScrollWheelZoom(true);
+    map.enableKeyboard(true);
+    map.centerAndZoom(new BMap.Point(114.367623,30.53081), 14);
+    var driving = new BMap.DrivingRoute(map, {
+        renderOptions: {
+            map: map,
+            autoViewport: true
+        }
+    });
+    function myFunction(){
+        var start = new BMap.Point(114.364293,30.539529);
+        var end = new BMap.Point(114.419907,30.513343);
+        driving.search(start, end);
+    }
+
+</script>
+</body>
+</html>

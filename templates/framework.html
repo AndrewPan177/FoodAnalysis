@@ -1,0 +1,47 @@
+
+
+{%load static%}
+
+<div id="header">
+<h1 style="font-family:'汉仪铸字超然体W';font-style: italic">去 哪 吃 呀</h1>
+</div>
+
+<div id="nav">
+<ul class="nav navbar-nav">
+	  {% comment %} <li class="active"><a href="#">数据展示</a></li> {% endcomment %}
+		
+		<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-family: '汉仪铸字超然体W';font-size: 20px">数据展示<b class="caret"></b></a>
+	     <ul class="dropdown-menu">
+	        <li><a href="http://localhost:8000/Taste/ShowShop" style="font-family: '汉仪铸字超然体W';font-size: 20px">城市餐饮位置分布</a></li>
+	        <li class="divider"></li>
+	        <li><a href="http://localhost:8000/Taste/HeatMap" style="font-family: '汉仪铸字超然体W';font-size: 20px">城市餐饮分布热图</a></li>
+	     </ul>
+      </li>
+
+	  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-family: '汉仪铸字超然体W';font-size: 20px">专题图<b class="caret"></b></a>
+	     <ul class="dropdown-menu">
+	        <li><a href="#" style="font-family: '汉仪铸字超然体W';font-size: 20px">饮食辣度分布</a></li>
+	        <li class="divider"></li>
+	        <li><a href="#" style="font-family: '汉仪铸字超然体W';font-size: 20px">饮食甜度分布</a></li>
+	     </ul>
+      </li>
+      <li><a href="#" style="font-family: '汉仪铸字超然体W';font-size: 20px">个性推荐</a></li>
+		<ul class="nav navbar-nav navbar-left" style="float: bottom;padding-bottom: 20px">
+      <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> 个人中心</a>
+      
+		<ul class="dropdown-menu">
+      	<li><a href="#"><span class="glyphicon glyphicon-user">  </span>个人设置</a></li>
+		<li class="divider"></li>
+		<li><a href="#"><span class="glyphicon glyphicon-log-out">  </span>注销</a></li>
+        <li class="divider"></li>
+		<li><a href="#"><span class="glyphicon glyphicon-log-in">  </span>返回首页</a></li>
+      </ul>
+      </li>
+</ul>
+</ul>
+</div>
+
+
+
+
+

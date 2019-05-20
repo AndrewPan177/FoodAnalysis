@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+
+    <div class="container2" id="largemap"></div>
+
+
+    <script type="text/javascript">
+
+        var mychart=echarts.init(document.getElementById('largemap'))
+
+        //这个是展示平行坐标图的
+        var data=[].concat({{data|safe}})
+        console.log(data)
+        // alert({{data|safe}})
+        option = {
+            backgroundColor: 'white',
+            parallelAxis: [
+                {
+                    dim: 0,
+                    name: 'City',
+                    type: 'category',
+                    data: ["北京", "天津", "重庆", "哈尔滨", "长春", "沈阳", "呼和浩特", "石家庄", "乌鲁木齐",
+                        "兰州", "西宁", "西安", "银川", "郑州", "济南", "太原", "合肥", "武汉", "长沙", "南京",
+                        "成都", "贵阳", "南宁", "拉萨", "杭州", "南昌", "广州", "福州", "海口"]
+                },
+                {dim: 1, name: 'Comments'},
+                {dim: 2, name: 'Score1'},
+                {dim: 3, name: 'Score2'},
+                {dim: 4, name: 'Score3'},
+            ],
+            series: {
+                type: 'parallel',
+                lineStyle: {
+                    width: 5
+                },
+                data: data.reverse()
+                // data: [
+                //     ['北京',0,0,0,1],
+                //     ['武汉',1,3,6,1],
+                //     ['广州',2,8,5,5],
+                //     ['深圳',3,5,2,2]
+                //     // [12.99, 100, 82, 'Good'],
+                //     // [9.99, 80, 77, 'OK'],
+                //     // [20, 120, 60, 'Excellent']
+                // ]
+                //}
+            }
+        }
+
+        mychart.setOption(option);
+
+    </script>
+
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>kriging test</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="{% static './js/ol.js' %}"></script>
+	<link rel="stylesheet" href="ol.css">china.js
+	<script type="text/javascript" src="{% static './js/kriging.js' %}"></script>
+	<script type="text/javascript" src="{% static './js/china.js' %}"></script>
+    <style type="text/css">
+    	#map {
+    		height: 100%;
+    		width: 100%;
+    	}
+    </style>
+</head>
+<body>
+	<div id="map"></div>
+	<script type="text/javascript">
+		var values = [];
+		var lngs = [
+			116.404158,
+			125.335126,
+			113.019875,
+			104.072363,
+			106.586184,
+			119.303063,
+			113.269007,
+			106.700675,
+			126.668317,
+			110.32385,
+			120.189055,
+			117.323834,
+			111.709591,
+			117.034643,
+			102.713812,
+			103.825792,
+			91.12518,
+			115.925653,
+			118.759829,
+			108.50184,
+			121.475605,
+			123.442681,
+			114.521532,
+			112.558139,
+			117.217271,
+			114.301131,
+			87.544978,
+			108.953493,
+			101.762493,
+			106.207537,
+			113.665365
+		];
+		var lats = [
+			39.910072,
+			43.887924,
+			28.200096,
+			30.663316,
+			29.566172,
+			26.08211,
+			23.137622,
+			26.605123,
+			45.748027,
+			20.015648,
+			30.248535,
+			31.891263,
+			40.811634,
+			36.687324,
+			25.049759,
+			36.050377,
+			29.660633,
+			28.667885,
+			32.068353,
+			22.792313,
+			31.223183,
+			41.785837,
+			38.048312,
+			37.876773,
+			39.142006,
+			30.651394,
+			43.878506,
+			34.273184,
+			36.636514,
+			38.501852,
+			34.752235
+		];
+		var features = [
+			[4,3,4,5,5,6,6,7],
+			[3,3,5,3,10,6,4,7],
+			[8,8,1,4,2,10,2,8],
+			[10,10,3,3,4,7,0,4],
+			[9,9,1,4,0,8,1,4],
+			[1,1,3,7,2,4,4,1],
+			[0,2,2,6,6,2,10,2],
+			[6,7,7,5,3,4,2,6],
+			[4,4,4,4,9,3,3,6],
+			[1,1,3,6,2,0,4,1],
+			[2,2,4,9,4,3,4,0],
+			[4,1,2,4,5,6,3,4],
+			[4,2,1,3,4,5,1,6],
+			[3,4,5,3,5,6,2,10],
+			[6,3,6,2,1,4,5,7],
+			[5,2,4,1,4,2,3,3],
+			[5,3,2,2,3,5,4,5],
+			[7,6,3,4,2,9,7,4],
+			[3,3,2,9,5,7,5,4],
+			[6,0,9,2,1,5,3,3],
+			[2,4,4,10,2,7,6,1],
+			[5,4,3,2,9,4,4,9],
+			[4,1,2,3,6,6,5,6],
+			[3,1,8,4,8,4,6,6],
+			[3,3,2,3,4,5,7,9],
+			[7,6,2,3,3,8,4,3],
+			[4,4,0,0,5,3,5,2],
+			[6,7,10,2,3,6,8,5],
+			[4,4,5,3,1,7,4,5],
+			[3,6,2,2,3,5,3,2],
+			[3,4,2,2,4,6,4,5]
+		];
+		var data = [6,9,1,1,4,8,6,2];
+
+		var GetDist = function(feature, userFeature) {
+			var sum = 0, dist = 0;
+			for (let i = 0; i < feature.length; i++) {
+				sum += Math.pow((feature[i] - userFeature[i]), 2);
+			}
+			dist = Math.sqrt(sum);
+			return dist;
+		}
+
+		let index = 0;
+		for (let j = 0; j < features.length; j++) {
+			let dist = GetDist(features[j], data);
+			values.push(1000 / dist);
+		}
+
+		//console.log(values);
+
+		let params = {
+			mapCenter: [114.360456, 30.538622],
+			krigingModel: 'spherical',
+			krigingSigma2: 0,
+			krigingAlpha: 100,
+			canvasAlpha: 0.6,//canvas图层透明度
+			colors: ["#3399FF", "#46A2E8", "#58ACD1", "#6BB5B9", "#7DBEA2", "#90C78B", "#A2D174", "#B5DA5D", "#C7E346", "#DAEC2E", "#ECF617", "#FFFF00"]
+		};
+
+		let baseLayer = new ol.layer.Tile({
+			title: "base",
+			source: new ol.source.OSM()
+		});
+
+		let map = new ol.Map({
+			target: 'map',
+			layers: [baseLayer],
+			view: new ol.View({
+				center: params.mapCenter,
+				projection: 'EPSG:4326',
+				zoom: 4
+			})
+		});
+
+		let WFSVectorSource = new ol.source.Vector();
+		let WFSVectorLayer = new ol.layer.Vector({
+			source: WFSVectorSource
+		});
+		map.addLayer(WFSVectorLayer);
+
+		let canvasLayer = null;
+		//let polygons = china;
+		//console.log(polygons);
+		const drawKriging = (extent)=>{
+			if (values.length > 3) {
+				let variogram = kriging.train(values, lngs, lats, params.krigingModel, params.krigingSigma2, params.krigingAlpha);
+
+				let polygons = [];
+				polygons.push([[extent[0], extent[1]], [extent[0], extent[3]], [extent[2], extent[3]], [extent[2], extent[1]]]);
+
+				let grid = kriging.grid(polygons, variogram, (extent[2] - extent[0]) / 900);
+
+				if (canvasLayer !== null) {
+					map.removeLayer(canvasLayer);
+				}
+
+				canvasLayer = new ol.layer.Image({
+            		source: new ol.source.ImageCanvas({
+                		canvasFunction:(extent, resolution, pixelRatio, size, projection)=>{
+                    		let canvas = document.createElement('canvas');
+                    		canvas.width = size[0];
+                    		canvas.height = size[1];
+                    		canvas.style.display='none';
+                    		//设置canvas透明度
+                    		canvas.getContext('2d').globalAlpha = params.canvasAlpha;
+                    		//使用分层设色渲染
+                    		kriging.plot(canvas, grid, [extent[0], extent[2]], [extent[1], extent[3]], params.colors);
+
+                    		return canvas;
+                		},
+                		projection: 'EPSG:4326'
+            		})
+        		});
+        		//向map添加图层
+        		map.addLayer(canvasLayer);
+    		}
+    		else {
+        		alert("有效样点个数不足，无法插值");
+    		}
+    	}
+
+    	//首次加载，自动渲染一次差值图
+		let extent = [params.mapCenter[0] - 42, params.mapCenter[1] - 13, params.mapCenter[0] + 23, params.mapCenter[1] + 25];
+    	WFSVectorSource.forEachFeatureIntersectingExtent(extent, (feature)=> {
+        	selectedFeatures.push(feature);
+    	});
+		drawKriging(extent);
+	</script>
+</body>
+</html>
