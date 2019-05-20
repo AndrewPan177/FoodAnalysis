@@ -1,0 +1,3 @@
+#idBox{position:fixed; background:#fff; z-index:2147583630; max-width:500px; width:90%; left:50%; top:50%;}
+#boxTopTitle{width:100%; height:45px; background: #0066cc; line-height:45px; font-size:16px; color:#fff; font-family:microsoft yahei; padding:0 15px; box-sizing:border-box;}
+#boxClose{float:right; font-size:24px; font-family:'ºÚÌå'; color:#fff;cursor: pointer;}
